@@ -1,0 +1,774 @@
+{
+  "schemaVersion": 2,
+  "defaultLocale": "zh-Hans",
+  "messages": {
+    "ui-projects-document-title": {
+      "zh-Hans": "语音研究项目",
+      "en": "Speech research projects"
+    },
+    "ui-index-skip": {
+      "zh-Hans": "跳转到内容",
+      "en": "Skip to content"
+    },
+    "ui-index-brand": {
+      "zh-Hans": "Champolu",
+      "en": "Champolu"
+    },
+    "ui-index-brand-context": {
+      "zh-Hans": "语音与语言研究",
+      "en": "Speech and language research"
+    },
+    "ui-index-nav-label": {
+      "zh-Hans": "主导航",
+      "en": "Main navigation"
+    },
+    "ui-index-nav-projects": {
+      "zh-Hans": "项目",
+      "en": "Projects"
+    },
+    "ui-index-nav-create": {
+      "zh-Hans": "创建项目",
+      "en": "Create Project"
+    },
+    "ui-index-nav-listener": {
+      "zh-Hans": "听辨示例",
+      "en": "Listening Example"
+    },
+    "ui-index-projects-heroHeadline": {
+      "zh-Hans": "让语言研究\n被听见。",
+      "en": "Give language research\na voice."
+    },
+    "ui-index-projects-intro": {
+      "zh-Hans": "从一句文字开始，记录表达，探索理解。创建朗读项目，或进入听辨任务。",
+      "en": "Record how language is spoken. Explore how it is understood. Create a recording project or try a listening task."
+    },
+    "ui-index-nav-create-2": {
+      "zh-Hans": "创建项目",
+      "en": "Create Project"
+    },
+    "ui-index-nav-listener-2": {
+      "zh-Hans": "听辨示例",
+      "en": "Listening Example"
+    },
+    "ui-index-projects-signalRead": {
+      "zh-Hans": "朗读，记录声音",
+      "en": "Read and record"
+    },
+    "ui-index-projects-signalListen": {
+      "zh-Hans": "听辨，理解语言",
+      "en": "Listen and understand"
+    },
+    "ui-index-projects-list": {
+      "zh-Hans": "已保存的项目",
+      "en": "Saved projects"
+    },
+    "ui-index-projects-libraryHelp": {
+      "zh-Hans": "选择项目，开始一次朗读。",
+      "en": "Choose a project to start recording."
+    },
+    "page-status": {
+      "zh-Hans": {
+        "completion.checking": "正在确认全部数据…",
+        "loading": "正在加载…",
+        "projects.copied": "链接已复制",
+        "projects.copyFailed": "无法复制，请从地址栏复制链接。",
+        "projects.loaded": "已加载 {count} 个项目"
+      },
+      "en": {
+        "completion.checking": "Checking all saved data…",
+        "loading": "Loading…",
+        "projects.copied": "Link copied",
+        "projects.copyFailed": "Copy failed. Copy the link from the address bar instead.",
+        "projects.loaded": "Loaded {count} projects"
+      }
+    },
+    "reload": {
+      "zh-Hans": "重试",
+      "en": "Retry"
+    },
+    "local-link-note": {
+      "zh-Hans": "此链接只能在保存了该项目的浏览器中打开。",
+      "en": "This link works only in the browser where this project is saved."
+    },
+    "ui-create-document-title": {
+      "zh-Hans": "创建朗读项目",
+      "en": "Create a recording project"
+    },
+    "ui-project-skip": {
+      "zh-Hans": "跳转到内容",
+      "en": "Skip to content"
+    },
+    "ui-project-brand": {
+      "zh-Hans": "Champolu",
+      "en": "Champolu"
+    },
+    "ui-project-brand-context": {
+      "zh-Hans": "语音与语言研究",
+      "en": "Speech and language research"
+    },
+    "ui-project-nav-label": {
+      "zh-Hans": "主导航",
+      "en": "Main navigation"
+    },
+    "ui-project-nav-projects": {
+      "zh-Hans": "项目",
+      "en": "Projects"
+    },
+    "ui-project-nav-create": {
+      "zh-Hans": "创建项目",
+      "en": "Create Project"
+    },
+    "ui-project-nav-listener": {
+      "zh-Hans": "听辨示例",
+      "en": "Listening Example"
+    },
+    "ui-project-create-guideTitle": {
+      "zh-Hans": "准备一个朗读项目",
+      "en": "Prepare a recording project"
+    },
+    "ui-project-create-guideIntro": {
+      "zh-Hans": "把句子整理好，让参与者专注于朗读。",
+      "en": "Prepare your sentences so participants can focus on reading."
+    },
+    "ui-project-create-guideFile": {
+      "zh-Hans": "上传 TXT 或 TSV 句子文件",
+      "en": "Upload a TXT or TSV sentence file"
+    },
+    "ui-project-create-guideOrder": {
+      "zh-Hans": "预览顺序，填写项目说明",
+      "en": "Check the order and add instructions"
+    },
+    "ui-project-create-guideLocal": {
+      "zh-Hans": "保存后获得专属朗读链接",
+      "en": "Save to get a recording link"
+    },
+    "ui-project-create-title": {
+      "zh-Hans": "创建朗读项目",
+      "en": "Create a recording project"
+    },
+    "ui-project-create-intro": {
+      "zh-Hans": "上传句子文件，设置朗读说明。每行一个句子，按文件顺序呈现。",
+      "en": "Upload sentences and add recording instructions. Each sentence is presented in file order."
+    },
+    "ui-project-create-file": {
+      "zh-Hans": "句子文件",
+      "en": "Sentence file"
+    },
+    "file-help": {
+      "zh-Hans": "UTF-8 编码的 TXT 或 TSV，最大 1 MB。TXT 每行一句；TSV 需要 text 列标题，可包含 reference 列。",
+      "en": "UTF-8 TXT or TSV, up to 1 MB. TXT: one sentence per line. TSV: text header, optional reference column."
+    },
+    "ui-project-create-preview": {
+      "zh-Hans": "文件预览",
+      "en": "File preview"
+    },
+    "duplicate-note": {
+      "zh-Hans": "重复句子将保留，分别生成独立编号。",
+      "en": "Duplicate sentences are retained with separate IDs."
+    },
+    "ui-project-create-details": {
+      "zh-Hans": "项目设置",
+      "en": "Project settings"
+    },
+    "ui-project-create-name": {
+      "zh-Hans": "项目名称",
+      "en": "Project title"
+    },
+    "ui-project-required": {
+      "zh-Hans": "必填",
+      "en": "Required"
+    },
+    "project-title": {
+      "zh-Hans": "例如：汉语句子朗读研究",
+      "en": "e.g. Chinese sentence reading study"
+    },
+    "ui-project-create-language": {
+      "zh-Hans": "句子语言",
+      "en": "Sentence language"
+    },
+    "ui-project-language-zhHans": {
+      "zh-Hans": "简体中文",
+      "en": "Simplified Chinese"
+    },
+    "ui-project-language-zhHant": {
+      "zh-Hans": "繁体中文",
+      "en": "Traditional Chinese"
+    },
+    "ui-project-language-en": {
+      "zh-Hans": "英语",
+      "en": "English"
+    },
+    "ui-project-create-instructions": {
+      "zh-Hans": "朗读说明（选填）",
+      "en": "Speaker instructions (optional)"
+    },
+    "project-instructions": {
+      "zh-Hans": "请在安静的环境中清楚地朗读。",
+      "en": "Please read clearly in a quiet place."
+    },
+    "ui-project-create-optionalDetails": {
+      "zh-Hans": "更多项目资料（选填）",
+      "en": "Additional project details (optional)"
+    },
+    "ui-project-create-reference": {
+      "zh-Hans": "研究编号（选填）",
+      "en": "Research reference (optional)"
+    },
+    "ui-project-create-description": {
+      "zh-Hans": "项目说明（选填）",
+      "en": "Description (optional)"
+    },
+    "save-project": {
+      "zh-Hans": {
+        "create.save": "保存项目",
+        "create.saving": "正在保存项目…"
+      },
+      "en": {
+        "create.save": "Save project",
+        "create.saving": "Saving project…"
+      }
+    },
+    "ui-record-document-title": {
+      "zh-Hans": "句子朗读",
+      "en": "Sentence recording"
+    },
+    "ui-record-skip": {
+      "zh-Hans": "跳转到内容",
+      "en": "Skip to content"
+    },
+    "ui-record-brand": {
+      "zh-Hans": "Champolu",
+      "en": "Champolu"
+    },
+    "ui-record-brand-context": {
+      "zh-Hans": "语音与语言研究",
+      "en": "Speech and language research"
+    },
+    "ui-record-nav-label": {
+      "zh-Hans": "主导航",
+      "en": "Main navigation"
+    },
+    "ui-record-nav-projects": {
+      "zh-Hans": "项目",
+      "en": "Projects"
+    },
+    "ui-record-record-guideTitle": {
+      "zh-Hans": "把文字变成声音",
+      "en": "Bring words to voice"
+    },
+    "ui-record-record-guideIntro": {
+      "zh-Hans": "按自己的节奏，逐句完成朗读。",
+      "en": "Read each sentence at your own pace."
+    },
+    "ui-record-record-guideQuiet": {
+      "zh-Hans": "找一个安静的环境",
+      "en": "Find a quiet place"
+    },
+    "ui-record-record-guideOne": {
+      "zh-Hans": "每次录制一个句子",
+      "en": "Record one sentence at a time"
+    },
+    "ui-record-record-guideSave": {
+      "zh-Hans": "停止后自动保存，再进入下一句",
+      "en": "Stop to save, then continue to the next sentence"
+    },
+    "record-heading": {
+      "zh-Hans": {
+        "record.register": "准备开始朗读",
+        "record.title": "句子朗读"
+      },
+      "en": {
+        "record.register": "Get ready to record",
+        "record.title": "Sentence recording"
+      }
+    },
+    "ui-record-record-registerHelp": {
+      "zh-Hans": "输入一个你能记住的用户名。无需邮箱或其他个人信息。",
+      "en": "Choose a memorable username. No email or other personal details are needed."
+    },
+    "resume": {
+      "zh-Hans": {
+        "listener.resume": "继续上次的听辨",
+        "record.resume": "继续上次的朗读"
+      },
+      "en": {
+        "listener.resume": "Resume previous session",
+        "record.resume": "Resume previous session"
+      }
+    },
+    "ui-record-record-username": {
+      "zh-Hans": "用户名",
+      "en": "Username"
+    },
+    "ui-record-required": {
+      "zh-Hans": "必填",
+      "en": "Required"
+    },
+    "username": {
+      "zh-Hans": "你的用户名",
+      "en": "Your username"
+    },
+    "start-session": {
+      "zh-Hans": {
+        "record.start": "开始朗读",
+        "record.starting": "正在创建会话…"
+      },
+      "en": {
+        "record.start": "Start session",
+        "record.starting": "Starting session…"
+      }
+    },
+    "record-progress": {
+      "zh-Hans": "已保存 {saved} / {total} 条",
+      "en": "Saved {saved} of {total} recordings"
+    },
+    "ui-record-record-instruction": {
+      "zh-Hans": "请清楚地朗读下面的句子。",
+      "en": "Read the sentence below clearly."
+    },
+    "record-action": {
+      "zh-Hans": {
+        "record.record": "开始录音",
+        "record.stop": "停止并保存"
+      },
+      "en": {
+        "record.record": "Record",
+        "record.stop": "Stop and save"
+      }
+    },
+    "ui-record-record-permissionHelp": {
+      "zh-Hans": "点击“开始录音”后，浏览器会询问麦克风权限。停止后，录音将自动保存。",
+      "en": "When you press Record, your browser will request microphone access. After you stop, the recording saves automatically."
+    },
+    "retry-recording": {
+      "zh-Hans": "重试保存录音",
+      "en": "Retry saving recording"
+    },
+    "download-recording": {
+      "zh-Hans": "下载未保存的录音",
+      "en": "Download unsaved recording"
+    },
+    "completion-heading": {
+      "zh-Hans": {
+        "listener.complete": "全部答案已保存",
+        "record.complete": "全部录音已保存"
+      },
+      "en": {
+        "listener.complete": "All answers saved",
+        "record.complete": "All recordings saved"
+      }
+    },
+    "completion-detail": {
+      "zh-Hans": "数据保留在此浏览器中。服务器接入后，才能跨设备访问。",
+      "en": "Data remains in this browser. Access across devices requires server integration."
+    },
+    "ui-record-back": {
+      "zh-Hans": "返回项目",
+      "en": "Back to projects"
+    },
+    "retry-page": {
+      "zh-Hans": "重试",
+      "en": "Retry"
+    },
+    "ui-listener-document-title": {
+      "zh-Hans": "句子听辨",
+      "en": "Sentence listening"
+    },
+    "ui-listener-skip": {
+      "zh-Hans": "跳转到内容",
+      "en": "Skip to content"
+    },
+    "ui-listener-brand": {
+      "zh-Hans": "Champolu",
+      "en": "Champolu"
+    },
+    "ui-listener-brand-context": {
+      "zh-Hans": "语音与语言研究",
+      "en": "Speech and language research"
+    },
+    "ui-listener-nav-label": {
+      "zh-Hans": "主导航",
+      "en": "Main navigation"
+    },
+    "ui-listener-nav-projects": {
+      "zh-Hans": "项目",
+      "en": "Projects"
+    },
+    "ui-listener-listener-guideTitle": {
+      "zh-Hans": "听见，读懂，选择",
+      "en": "Listen, read and choose"
+    },
+    "ui-listener-listener-guideIntro": {
+      "zh-Hans": "根据呈现的内容，回答每一个问题。",
+      "en": "Answer each question using the content presented."
+    },
+    "ui-listener-listener-guideMode": {
+      "zh-Hans": "题目可能包含文字、录音或两者",
+      "en": "Questions may include text, audio or both"
+    },
+    "ui-listener-listener-guideChoice": {
+      "zh-Hans": "每道题选择一个答案",
+      "en": "Choose one answer per question"
+    },
+    "ui-listener-listener-guideSave": {
+      "zh-Hans": "答案保存后进入下一题",
+      "en": "Continue after your answer is saved"
+    },
+    "ui-listener-listener-title": {
+      "zh-Hans": "句子听辨",
+      "en": "Sentence listening"
+    },
+    "ui-listener-listener-demo": {
+      "zh-Hans": "功能示例，不是真实研究",
+      "en": "Feature example, not a live study"
+    },
+    "ui-listener-listener-demoHelp": {
+      "zh-Hans": "示例展示三种呈现方式，使用英语合成语音，仅供功能演示。真实研究请替换为经研究人员确认的录音。",
+      "en": "This example shows all three presentation modes using synthetic English speech for demonstration only. Replace it with researcher-approved recordings for a real study."
+    },
+    "new-session": {
+      "zh-Hans": "开始新的听辨",
+      "en": "Start a new session"
+    },
+    "play-audio": {
+      "zh-Hans": {
+        "audio.pause": "暂停录音",
+        "audio.play": "播放录音"
+      },
+      "en": {
+        "audio.pause": "Pause recording",
+        "audio.play": "Play recording"
+      }
+    },
+    "retry-audio": {
+      "zh-Hans": "重新加载录音",
+      "en": "Reload recording"
+    },
+    "submit-answer": {
+      "zh-Hans": {
+        "listener.retry": "重试保存答案",
+        "listener.saving": "正在保存答案…",
+        "listener.submit": "保存答案"
+      },
+      "en": {
+        "listener.retry": "Retry saving answer",
+        "listener.saving": "Saving answer…",
+        "listener.submit": "Save answer"
+      }
+    },
+    "ui-listener-back": {
+      "zh-Hans": "返回项目",
+      "en": "Back to projects"
+    },
+    "storage-notice": {
+      "zh-Hans": {
+        "local.notice": "数据保存在此浏览器中",
+        "remote.notice": "数据保存到服务器"
+      },
+      "en": {
+        "local.notice": "Data is stored in this browser",
+        "remote.notice": "Data is saved to the server"
+      }
+    },
+    "storage-detail": {
+      "zh-Hans": {
+        "local.detail": "项目、录音和答案只保存在当前浏览器。请勿清除浏览器数据。",
+        "remote.detail": "保存成功后才能进入下一项。"
+      },
+      "en": {
+        "local.detail": "Projects, recordings and answers stay in this browser. Do not clear its data.",
+        "remote.detail": "You will advance only after your data is saved."
+      }
+    },
+    "preview-summary": {
+      "zh-Hans": "{count} 个句子 · {blanks} 个空行 · {duplicates} 个重复句子",
+      "en": "{count} sentences · {blanks} blank lines · {duplicates} duplicates"
+    },
+    "record-status": {
+      "zh-Hans": {
+        "record.limit": "录音接近两分钟限制，请准备停止。",
+        "record.ready": "准备就绪",
+        "record.recording": "正在录音",
+        "record.requesting": "请允许麦克风访问…",
+        "record.saving": "正在保存到此浏览器…",
+        "record.stopping": "正在完成录音…",
+        "record.unsaved": "录音尚未保存。请保持此页面打开，然后重试。",
+        "record.uploading": "正在上传录音…",
+        "completion.checking": "正在确认全部数据…"
+      },
+      "en": {
+        "record.limit": "Recording is close to the two-minute limit. Please finish.",
+        "record.ready": "Ready to record",
+        "record.recording": "Recording",
+        "record.requesting": "Allow microphone access…",
+        "record.saving": "Saving in this browser…",
+        "record.stopping": "Finalizing recording…",
+        "record.unsaved": "This recording is not saved. Keep this page open and retry.",
+        "record.uploading": "Uploading recording…",
+        "completion.checking": "Checking all saved data…"
+      }
+    },
+    "sentence-position": {
+      "zh-Hans": "句子 {current} / {total}",
+      "en": "Sentence {current} of {total}"
+    },
+    "saved-progress": {
+      "zh-Hans": "已保存 {saved} / {total} 条",
+      "en": "Saved {saved} of {total} recordings"
+    },
+    "record-timer": {
+      "zh-Hans": "{time}",
+      "en": "{time}"
+    },
+    "completion-summary": {
+      "zh-Hans": {
+        "listener.completeSummary": "已保存 {saved} / {total} 个答案。",
+        "record.completeSummary": "已保存 {saved} / {total} 条录音。"
+      },
+      "en": {
+        "listener.completeSummary": "Saved {saved} of {total} answers.",
+        "record.completeSummary": "Saved {saved} of {total} recordings."
+      }
+    },
+    "audio-status": {
+      "zh-Hans": {
+        "audio.failed": "录音无法播放。请重新加载或联系研究人员提供音频。",
+        "audio.loading": "正在加载录音…"
+      },
+      "en": {
+        "audio.failed": "Recording could not be played. Reload or ask the researcher to provide the audio.",
+        "audio.loading": "Loading recording…"
+      }
+    },
+    "question-audio": {
+      "zh-Hans": "句子录音",
+      "en": "Sentence recording"
+    },
+    "audio-time": {
+      "zh-Hans": "{elapsed} / {duration}",
+      "en": "{elapsed} / {duration}"
+    },
+    "question-position": {
+      "zh-Hans": "问题 {current} / {total}",
+      "en": "Question {current} of {total}"
+    },
+    "answer-progress": {
+      "zh-Hans": "已保存 {saved} / {total} 个答案",
+      "en": "Saved {saved} of {total} answers"
+    },
+    "listener-progress": {
+      "zh-Hans": "已保存 {saved} / {total} 个答案",
+      "en": "Saved {saved} of {total} answers"
+    },
+    "question-instructions": {
+      "zh-Hans": "请选择一个答案。",
+      "en": "Choose one answer."
+    },
+    "answer-status": {
+      "zh-Hans": "正在保存答案…",
+      "en": "Saving answer…"
+    },
+    "ui-projects-empty-title": {
+      "zh-Hans": "还没有项目",
+      "en": "No projects yet"
+    },
+    "ui-projects-empty-help": {
+      "zh-Hans": "上传句子文件，创建第一个朗读项目。",
+      "en": "Upload a sentence file to create your first recording project."
+    },
+    "ui-projects-empty-create": {
+      "zh-Hans": "创建项目",
+      "en": "Create Project"
+    },
+    "page-error": {
+      "zh-Hans": {
+        "error.audioFailed": "无法加载录音，请重试。",
+        "error.choiceRequired": "请选择一个答案再继续。",
+        "error.conflict": "此项目或答案已被修改。请重新加载，查看已保存的进度。",
+        "error.controlCharacters": "输入包含无效控制字符，请检查内容。",
+        "error.deviceBusy": "麦克风无法使用。请关闭占用它的应用后重试。",
+        "error.deviceMissing": "没有找到麦克风，请连接设备后重试。",
+        "error.emptyTake": "没有录到声音数据，请重新录制。",
+        "error.encodingInvalid": "文件不是有效的 UTF-8，请重新导出为 UTF-8。",
+        "error.fileEmpty": "文件中没有可用的句子。",
+        "error.fileRequired": "请选择句子文件。",
+        "error.fileTooLarge": "文件不能超过 1 MB。",
+        "error.formatInvalid": "请使用 TXT 或 TSV 文件。",
+        "error.headerInvalid": "TSV 标题必须包含 text，可选 reference，不支持其他列。",
+        "error.incomplete": "还有未保存的数据，请继续完成。",
+        "error.insecure": "录音需要 HTTPS 或 localhost 安全页面。",
+        "error.instructionsTooLong": "说明不能超过 2000 个字符。",
+        "error.interfaceUnavailable": "界面文字无法加载，请重新加载页面。",
+        "error.interrupted": "录音已中断。当前句子尚未保存，请重新录制。",
+        "error.invalidStudy": "无法加载有效题目，请检查研究文件。",
+        "error.languageInvalid": "请选择支持的句子语言。",
+        "error.network": "连接失败，请保持页面打开并重试。",
+        "error.permissionDenied": "麦克风权限被拒绝。请在浏览器设置中允许访问，然后重试。",
+        "error.projectMissing": "找不到这个项目。请检查链接或返回项目页。",
+        "error.quota": "浏览器存储空间不足。请保持页面打开；若有未保存的录音，可先下载，再重试。",
+        "error.referenceTooLong": "研究编号不能超过 100 个字符。",
+        "error.rowMalformed": "第 {line} 行格式无效，请检查句子或列数。",
+        "error.saveFailed": "保存失败，请保持页面打开并重试。",
+        "error.schemaUnsupported": "数据版本不受支持，请联系项目维护人员。",
+        "error.sentenceTooLong": "第 {line} 行超过 1000 个字符。",
+        "error.sessionMissing": "找不到这个会话，请重新打开项目。",
+        "error.storageBlocked": "请关闭其他旧版本页面，然后重新加载。",
+        "error.storageUnavailable": "此浏览器无法保存数据。请使用普通浏览模式并允许网站存储。",
+        "error.titleRequired": "请输入项目名称。",
+        "error.titleTooLong": "项目名称不能超过 120 个字符。",
+        "error.tooManySentences": "每个项目最多 1000 个句子。",
+        "error.unsupported": "此浏览器不支持录音，请使用较新的 Chrome、Safari 或 Firefox。",
+        "error.unsupportedMedia": "录音格式或大小不受支持，请重新录制，最长两分钟、最大 10 MB。",
+        "error.usernameRequired": "请输入用户名。",
+        "error.usernameTooLong": "用户名不能超过 40 个字符。"
+      },
+      "en": {
+        "error.audioFailed": "The recording could not be loaded. Retry.",
+        "error.choiceRequired": "Choose one answer before continuing.",
+        "error.conflict": "This item changed or was saved elsewhere. Reload to view confirmed progress.",
+        "error.controlCharacters": "The input contains invalid control characters.",
+        "error.deviceBusy": "The microphone is unavailable. Close other apps using it and retry.",
+        "error.deviceMissing": "No microphone was found. Connect one and retry.",
+        "error.emptyTake": "No audio data was captured. Record again.",
+        "error.encodingInvalid": "The file is not valid UTF-8. Export it as UTF-8 and retry.",
+        "error.fileEmpty": "The file has no usable sentences.",
+        "error.fileRequired": "Choose a sentence file.",
+        "error.fileTooLarge": "The file must be no larger than 1 MB.",
+        "error.formatInvalid": "Use a TXT or TSV file.",
+        "error.headerInvalid": "TSV headers must contain text and optionally reference; other columns are unsupported.",
+        "error.incomplete": "Some items are not saved yet. Continue the session.",
+        "error.insecure": "Recording requires HTTPS or trusted localhost.",
+        "error.instructionsTooLong": "Instructions and description must not exceed 2,000 characters.",
+        "error.interfaceUnavailable": "Interface text could not be loaded. Reload this page.",
+        "error.interrupted": "Recording was interrupted. This sentence is not saved; record it again.",
+        "error.invalidStudy": "Valid questions could not be loaded. Check the study file.",
+        "error.languageInvalid": "Choose a supported sentence language.",
+        "error.network": "Connection failed. Keep this page open and retry.",
+        "error.permissionDenied": "Microphone access was denied. Allow it in browser settings and retry.",
+        "error.projectMissing": "This project could not be found. Check the link or return to projects.",
+        "error.quota": "Browser storage is full. Keep this page open; download any pending recording before retrying.",
+        "error.referenceTooLong": "The reference must not exceed 100 characters.",
+        "error.rowMalformed": "Line {line} is invalid. Check its sentence and column count.",
+        "error.saveFailed": "Save failed. Keep the page open and retry.",
+        "error.schemaUnsupported": "This data version is unsupported. Contact the project maintainer.",
+        "error.sentenceTooLong": "Line {line} exceeds 1,000 characters.",
+        "error.sessionMissing": "This session is missing. Reopen the project.",
+        "error.storageBlocked": "Close other older tabs of this app, then reload.",
+        "error.storageUnavailable": "This browser cannot store data. Use normal browsing mode and allow website storage.",
+        "error.titleRequired": "Enter a project title.",
+        "error.titleTooLong": "The title must not exceed 120 characters.",
+        "error.tooManySentences": "A project supports up to 1,000 sentences.",
+        "error.unsupported": "Recording is unsupported. Use a recent Chrome, Safari or Firefox browser.",
+        "error.unsupportedMedia": "The recording format or size is unsupported. Record again: up to two minutes and 10 MB.",
+        "error.usernameRequired": "Enter a username.",
+        "error.usernameTooLong": "The username must not exceed 40 characters."
+      }
+    },
+    "form-error": {
+      "zh-Hans": {
+        "error.audioFailed": "无法加载录音，请重试。",
+        "error.choiceRequired": "请选择一个答案再继续。",
+        "error.conflict": "此项目或答案已被修改。请重新加载，查看已保存的进度。",
+        "error.controlCharacters": "输入包含无效控制字符，请检查内容。",
+        "error.deviceBusy": "麦克风无法使用。请关闭占用它的应用后重试。",
+        "error.deviceMissing": "没有找到麦克风，请连接设备后重试。",
+        "error.emptyTake": "没有录到声音数据，请重新录制。",
+        "error.encodingInvalid": "文件不是有效的 UTF-8，请重新导出为 UTF-8。",
+        "error.fileEmpty": "文件中没有可用的句子。",
+        "error.fileRequired": "请选择句子文件。",
+        "error.fileTooLarge": "文件不能超过 1 MB。",
+        "error.formatInvalid": "请使用 TXT 或 TSV 文件。",
+        "error.headerInvalid": "TSV 标题必须包含 text，可选 reference，不支持其他列。",
+        "error.incomplete": "还有未保存的数据，请继续完成。",
+        "error.insecure": "录音需要 HTTPS 或 localhost 安全页面。",
+        "error.instructionsTooLong": "说明不能超过 2000 个字符。",
+        "error.interfaceUnavailable": "界面文字无法加载，请重新加载页面。",
+        "error.interrupted": "录音已中断。当前句子尚未保存，请重新录制。",
+        "error.invalidStudy": "无法加载有效题目，请检查研究文件。",
+        "error.languageInvalid": "请选择支持的句子语言。",
+        "error.network": "连接失败，请保持页面打开并重试。",
+        "error.permissionDenied": "麦克风权限被拒绝。请在浏览器设置中允许访问，然后重试。",
+        "error.projectMissing": "找不到这个项目。请检查链接或返回项目页。",
+        "error.quota": "浏览器存储空间不足。请保持页面打开；若有未保存的录音，可先下载，再重试。",
+        "error.referenceTooLong": "研究编号不能超过 100 个字符。",
+        "error.rowMalformed": "第 {line} 行格式无效，请检查句子或列数。",
+        "error.saveFailed": "保存失败，请保持页面打开并重试。",
+        "error.schemaUnsupported": "数据版本不受支持，请联系项目维护人员。",
+        "error.sentenceTooLong": "第 {line} 行超过 1000 个字符。",
+        "error.sessionMissing": "找不到这个会话，请重新打开项目。",
+        "error.storageBlocked": "请关闭其他旧版本页面，然后重新加载。",
+        "error.storageUnavailable": "此浏览器无法保存数据。请使用普通浏览模式并允许网站存储。",
+        "error.titleRequired": "请输入项目名称。",
+        "error.titleTooLong": "项目名称不能超过 120 个字符。",
+        "error.tooManySentences": "每个项目最多 1000 个句子。",
+        "error.unsupported": "此浏览器不支持录音，请使用较新的 Chrome、Safari 或 Firefox。",
+        "error.unsupportedMedia": "录音格式或大小不受支持，请重新录制，最长两分钟、最大 10 MB。",
+        "error.usernameRequired": "请输入用户名。",
+        "error.usernameTooLong": "用户名不能超过 40 个字符。"
+      },
+      "en": {
+        "error.audioFailed": "The recording could not be loaded. Retry.",
+        "error.choiceRequired": "Choose one answer before continuing.",
+        "error.conflict": "This item changed or was saved elsewhere. Reload to view confirmed progress.",
+        "error.controlCharacters": "The input contains invalid control characters.",
+        "error.deviceBusy": "The microphone is unavailable. Close other apps using it and retry.",
+        "error.deviceMissing": "No microphone was found. Connect one and retry.",
+        "error.emptyTake": "No audio data was captured. Record again.",
+        "error.encodingInvalid": "The file is not valid UTF-8. Export it as UTF-8 and retry.",
+        "error.fileEmpty": "The file has no usable sentences.",
+        "error.fileRequired": "Choose a sentence file.",
+        "error.fileTooLarge": "The file must be no larger than 1 MB.",
+        "error.formatInvalid": "Use a TXT or TSV file.",
+        "error.headerInvalid": "TSV headers must contain text and optionally reference; other columns are unsupported.",
+        "error.incomplete": "Some items are not saved yet. Continue the session.",
+        "error.insecure": "Recording requires HTTPS or trusted localhost.",
+        "error.instructionsTooLong": "Instructions and description must not exceed 2,000 characters.",
+        "error.interfaceUnavailable": "Interface text could not be loaded. Reload this page.",
+        "error.interrupted": "Recording was interrupted. This sentence is not saved; record it again.",
+        "error.invalidStudy": "Valid questions could not be loaded. Check the study file.",
+        "error.languageInvalid": "Choose a supported sentence language.",
+        "error.network": "Connection failed. Keep this page open and retry.",
+        "error.permissionDenied": "Microphone access was denied. Allow it in browser settings and retry.",
+        "error.projectMissing": "This project could not be found. Check the link or return to projects.",
+        "error.quota": "Browser storage is full. Keep this page open; download any pending recording before retrying.",
+        "error.referenceTooLong": "The reference must not exceed 100 characters.",
+        "error.rowMalformed": "Line {line} is invalid. Check its sentence and column count.",
+        "error.saveFailed": "Save failed. Keep the page open and retry.",
+        "error.schemaUnsupported": "This data version is unsupported. Contact the project maintainer.",
+        "error.sentenceTooLong": "Line {line} exceeds 1,000 characters.",
+        "error.sessionMissing": "This session is missing. Reopen the project.",
+        "error.storageBlocked": "Close other older tabs of this app, then reload.",
+        "error.storageUnavailable": "This browser cannot store data. Use normal browsing mode and allow website storage.",
+        "error.titleRequired": "Enter a project title.",
+        "error.titleTooLong": "The title must not exceed 120 characters.",
+        "error.tooManySentences": "A project supports up to 1,000 sentences.",
+        "error.unsupported": "Recording is unsupported. Use a recent Chrome, Safari or Firefox browser.",
+        "error.unsupportedMedia": "The recording format or size is unsupported. Record again: up to two minutes and 10 MB.",
+        "error.usernameRequired": "Enter a username.",
+        "error.usernameTooLong": "The username must not exceed 40 characters."
+      }
+    }
+  },
+  "templates": {
+    "ui-projects-{id}-count": {
+      "zh-Hans": "{count} 个句子",
+      "en": "{count} sentences"
+    },
+    "ui-projects-{id}-date": {
+      "zh-Hans": "创建于 {date}",
+      "en": "Created {date}"
+    },
+    "ui-projects-{id}-open": {
+      "zh-Hans": "开始朗读",
+      "en": "Open recording"
+    },
+    "ui-projects-{id}-copy": {
+      "zh-Hans": "复制链接",
+      "en": "Copy link"
+    },
+    "ui-preview-{id}-line": {
+      "zh-Hans": "第 {line} 行",
+      "en": "Line {line}"
+    }
+  }
+}

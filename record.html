@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <meta name="theme-color" content="#FFFFFF" />
+    <title
+      id="ui-record-document-title"
+      data-i18n="ui-record-document-title"
+      data-i18n-state="record.title"
+    >
+      Champolu
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./assets/css/app.css" />
+    <script type="module" src="./assets/js/record.js"></script>
+  </head>
+  <body data-page="record">
+    <a
+      class="skip button"
+      href="#main"
+      data-i18n="ui-record-skip"
+      id="ui-record-skip"
+      data-i18n-state="skip"
+    ></a>
+    <header class="header">
+      <div class="shell header-inner">
+        <a
+          class="brand"
+          href="./index.html"
+          data-i18n-aria-label="ui-record-brand"
+          id="ui-record-brand"
+          data-i18n-state="brand"
+          ><img
+            class="brand-logo"
+            src="./assets/images/champolu-logo.png"
+            width="120"
+            height="104"
+            alt=""
+            aria-hidden="true" /><span
+            ><span
+              class="brand-context"
+              data-i18n="ui-record-brand-context"
+              id="ui-record-brand-context"
+              data-i18n-state="brand.context"
+            ></span></span
+        ></a>
+        <nav
+          class="nav"
+          data-i18n-aria-label="ui-record-nav-label"
+          id="ui-record-nav-label"
+          data-i18n-state="nav.label"
+        >
+          <a
+            href="./index.html"
+            data-i18n="ui-record-nav-projects"
+            id="ui-record-nav-projects"
+            data-i18n-state="nav.projects"
+          ></a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="shell page">
+      <div class="task-layout">
+        <aside class="task-guide">
+          <div class="guide-icon">
+            <svg
+              class=""
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="9" y="2" width="6" height="13" rx="3" />
+              <path d="M5 11v1a7 7 0 0 0 14 0v-1M12 19v4m-4 0h8" />
+            </svg>
+          </div>
+          <h2
+            class=""
+            data-i18n="ui-record-record-guideTitle"
+            id="ui-record-record-guideTitle"
+            data-i18n-state="record.guideTitle"
+          ></h2>
+          <p
+            class="intro"
+            data-i18n="ui-record-record-guideIntro"
+            id="ui-record-record-guideIntro"
+            data-i18n-state="record.guideIntro"
+          ></p>
+          <ul class="guide-list">
+            <li>
+              <svg
+                class=""
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m5 12 4 4L19 6" /></svg
+              ><span
+                class=""
+                data-i18n="ui-record-record-guideQuiet"
+                id="ui-record-record-guideQuiet"
+                data-i18n-state="record.guideQuiet"
+              ></span>
+            </li>
+            <li>
+              <svg
+                class=""
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m5 12 4 4L19 6" /></svg
+              ><span
+                class=""
+                data-i18n="ui-record-record-guideOne"
+                id="ui-record-record-guideOne"
+                data-i18n-state="record.guideOne"
+              ></span>
+            </li>
+            <li>
+              <svg
+                class=""
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m5 12 4 4L19 6" /></svg
+              ><span
+                class=""
+                data-i18n="ui-record-record-guideSave"
+                id="ui-record-record-guideSave"
+                data-i18n-state="record.guideSave"
+              ></span>
+            </li>
+          </ul>
+        </aside>
+        <div class="task-main">
+          <div class="task-heading">
+            <p id="project-name" class="project-name"></p>
+            <h1
+              id="record-heading"
+              data-i18n="record-heading"
+              data-i18n-state="record.register"
+            ></h1>
+            <p id="project-instructions" class="intro" hidden></p>
+          </div>
+          <p id="page-error" class="error" hidden></p>
+          <section id="registration" class="panel">
+            <p
+              class="mb-6 text-muted"
+              data-i18n="ui-record-record-registerHelp"
+              id="ui-record-record-registerHelp"
+              data-i18n-state="record.registerHelp"
+            ></p>
+            <button
+              id="resume"
+              class="button secondary mb-6"
+              hidden
+              data-i18n="resume"
+              data-i18n-state="record.resume"
+            ></button>
+            <form id="username-form" novalidate>
+              <div class="field">
+                <label for="username"
+                  ><span
+                    data-i18n="ui-record-record-username"
+                    id="ui-record-record-username"
+                    data-i18n-state="record.username"
+                  ></span
+                  ><span
+                    class="required"
+                    data-i18n="ui-record-required"
+                    id="ui-record-required"
+                    data-i18n-state="required"
+                  ></span></label
+                ><input
+                  id="username"
+                  required
+                  autocapitalize="none"
+                  autocorrect="off"
+                  spellcheck="false"
+                  enterkeyhint="done"
+                  data-i18n-placeholder="username"
+                  aria-describedby="page-error"
+                  data-i18n-state="record.usernamePlaceholder"
+                />
+              </div>
+              <button
+                id="start-session"
+                class="button mt-6"
+                type="submit"
+                data-i18n="start-session"
+                data-i18n-state="record.start"
+              ></button>
+            </form>
+          </section>
+          <section id="recording-panel" class="panel" hidden>
+            <div class="progress-heading numbers">
+              <p id="sentence-position"></p>
+              <p id="saved-progress"></p>
+            </div>
+            <progress
+              id="record-progress"
+              max="1"
+              value="0"
+              data-i18n-aria-label="record-progress"
+              data-i18n-state="record.progress"
+            ></progress>
+            <p
+              class="task-instruction"
+              data-i18n="ui-record-record-instruction"
+              id="ui-record-record-instruction"
+              data-i18n-state="record.instruction"
+            ></p>
+            <p id="sentence" class="sentence"></p>
+            <div class="recording-controls">
+              <button
+                id="record-action"
+                class="button record-button"
+                type="button"
+                data-i18n="record-action"
+                data-i18n-state="record.record"
+              ></button
+              ><output
+                id="record-timer"
+                class="record-timer numbers"
+                aria-live="off"
+                >00:00</output
+              >
+            </div>
+            <p id="record-status" class="status mt-5" role="status"></p>
+            <p
+              class="helper mt-4"
+              data-i18n="ui-record-record-permissionHelp"
+              id="ui-record-record-permissionHelp"
+              data-i18n-state="record.permissionHelp"
+            ></p>
+            <div id="retry-controls" class="controls retry-actions" hidden>
+              <button
+                id="retry-recording"
+                class="button"
+                data-i18n="retry-recording"
+                data-i18n-state="record.retry"
+              ></button
+              ><button
+                id="download-recording"
+                class="button secondary"
+                data-i18n="download-recording"
+                data-i18n-state="record.download"
+              ></button>
+            </div>
+          </section>
+          <section id="completion" class="panel completion-panel" hidden>
+            <span id="completion-symbol" class="check" aria-hidden="true"
+              >✓</span
+            >
+            <h2
+              id="completion-heading"
+              data-i18n="completion-heading"
+              data-i18n-state="record.complete"
+            ></h2>
+            <p id="completion-summary" class="mt-4"></p>
+            <p
+              id="completion-detail"
+              class="helper"
+              data-i18n="completion-detail"
+              data-i18n-state="completion.detail"
+            ></p>
+            <a
+              href="./index.html"
+              class="button secondary mt-8"
+              data-i18n="ui-record-back"
+              id="ui-record-back"
+              data-i18n-state="back"
+            ></a>
+          </section>
+          <p
+            id="page-status"
+            class="status mt-4"
+            role="status"
+            data-i18n="page-status"
+            data-i18n-state="loading"
+          ></p>
+          <button
+            id="retry-page"
+            class="button secondary"
+            hidden
+            data-i18n="retry-page"
+            data-i18n-state="retry"
+          ></button>
+          <aside class="storage-notice">
+            <svg
+              class=""
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="4" width="18" height="16" rx="3" />
+              <path d="M7 8h10M7 12h10M7 16h3" />
+            </svg>
+            <div>
+              <strong id="storage-notice"></strong>
+              <p id="storage-detail"></p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

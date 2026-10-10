@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <meta name="theme-color" content="#FFFFFF" />
+    <title
+      id="ui-create-document-title"
+      data-i18n="ui-create-document-title"
+      data-i18n-state="create.title"
+    >
+      Champolu
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./assets/css/app.css" />
+    <script type="module" src="./assets/js/project.js"></script>
+  </head>
+  <body data-page="create">
+    <a
+      class="skip button"
+      href="#main"
+      data-i18n="ui-project-skip"
+      id="ui-project-skip"
+      data-i18n-state="skip"
+    ></a>
+    <header class="header">
+      <div class="shell header-inner">
+        <a
+          class="brand"
+          href="./index.html"
+          data-i18n-aria-label="ui-project-brand"
+          id="ui-project-brand"
+          data-i18n-state="brand"
+          ><img
+            class="brand-logo"
+            src="./assets/images/champolu-logo.png"
+            width="120"
+            height="104"
+            alt=""
+            aria-hidden="true" /><span
+            ><span
+              class="brand-context"
+              data-i18n="ui-project-brand-context"
+              id="ui-project-brand-context"
+              data-i18n-state="brand.context"
+            ></span></span
+        ></a>
+        <nav
+          class="nav"
+          data-i18n-aria-label="ui-project-nav-label"
+          id="ui-project-nav-label"
+          data-i18n-state="nav.label"
+        >
+          <a
+            href="./index.html"
+            data-i18n="ui-project-nav-projects"
+            id="ui-project-nav-projects"
+            data-i18n-state="nav.projects"
+          ></a
+          ><a
+            href="./project.html"
+            aria-current="page"
+            data-i18n="ui-project-nav-create"
+            id="ui-project-nav-create"
+            data-i18n-state="nav.create"
+          ></a
+          ><a
+            href="./listener.html?study=demo"
+            data-i18n="ui-project-nav-listener"
+            id="ui-project-nav-listener"
+            data-i18n-state="nav.listener"
+          ></a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="shell page">
+      <div class="task-layout">
+        <aside class="task-guide">
+          <div class="guide-icon">
+            <svg
+              class=""
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 2h9l5 5v15H5V2Zm9 0v5h5M8 11h8m-8 4h8m-8 4h5" />
+            </svg>
+          </div>
+          <h2
+            class=""
+            data-i18n="ui-project-create-guideTitle"
+            id="ui-project-create-guideTitle"
+            data-i18n-state="create.guideTitle"
+          ></h2>
+          <p
+            class="intro"
+            data-i18n="ui-project-create-guideIntro"
+            id="ui-project-create-guideIntro"
+            data-i18n-state="create.guideIntro"
+          ></p>
+          <ul class="guide-list">
+            <li>
+              <svg
+                class=""
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m5 12 4 4L19 6" /></svg
+              ><span
+                class=""
+                data-i18n="ui-project-create-guideFile"
+                id="ui-project-create-guideFile"
+                data-i18n-state="create.guideFile"
+              ></span>
+            </li>
+            <li>
+              <svg
+                class=""
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m5 12 4 4L19 6" /></svg
+              ><span
+                class=""
+                data-i18n="ui-project-create-guideOrder"
+                id="ui-project-create-guideOrder"
+                data-i18n-state="create.guideOrder"
+              ></span>
+            </li>
+            <li>
+              <svg
+                class=""
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m5 12 4 4L19 6" /></svg
+              ><span
+                class=""
+                data-i18n="ui-project-create-guideLocal"
+                id="ui-project-create-guideLocal"
+                data-i18n-state="create.guideLocal"
+              ></span>
+            </li>
+          </ul>
+        </aside>
+        <div class="task-main">
+          <div class="task-heading">
+            <h1
+              class=""
+              data-i18n="ui-project-create-title"
+              id="ui-project-create-title"
+              data-i18n-state="create.title"
+            ></h1>
+            <p
+              class="intro"
+              data-i18n="ui-project-create-intro"
+              id="ui-project-create-intro"
+              data-i18n-state="create.intro"
+            ></p>
+          </div>
+          <form id="project-form" class="panel" novalidate>
+            <section class="panel-section">
+              <div class="import-zone">
+                <div class="import-heading">
+                  <svg
+                    class=""
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 16V3m-5 5 5-5 5 5M3 15v6h18v-6" /></svg
+                  ><label
+                    for="sentence-file"
+                    data-i18n="ui-project-create-file"
+                    id="ui-project-create-file"
+                    data-i18n-state="create.file"
+                  ></label>
+                </div>
+                <input
+                  id="sentence-file"
+                  type="file"
+                  name="file"
+                  accept=".txt,.tsv,text/plain,text/tab-separated-values"
+                  required
+                  aria-describedby="file-help"
+                />
+                <p
+                  id="file-help"
+                  class="helper"
+                  data-i18n="file-help"
+                  data-i18n-state="create.fileHelp"
+                ></p>
+              </div>
+              <section id="file-preview" class="file-preview" hidden>
+                <h2
+                  class="form-section-title"
+                  data-i18n="ui-project-create-preview"
+                  id="ui-project-create-preview"
+                  data-i18n-state="create.preview"
+                ></h2>
+                <p id="preview-summary" class="helper"></p>
+                <p
+                  id="duplicate-note"
+                  class="helper"
+                  data-i18n="duplicate-note"
+                  hidden
+                  data-i18n-state="create.duplicates"
+                ></p>
+                <ol id="preview-sentences"></ol>
+              </section>
+            </section>
+            <section class="panel-section">
+              <h2
+                class="form-section-title"
+                data-i18n="ui-project-create-details"
+                id="ui-project-create-details"
+                data-i18n-state="create.details"
+              ></h2>
+              <div class="field">
+                <label for="project-title"
+                  ><span
+                    data-i18n="ui-project-create-name"
+                    id="ui-project-create-name"
+                    data-i18n-state="create.name"
+                  ></span
+                  ><span
+                    class="required"
+                    data-i18n="ui-project-required"
+                    id="ui-project-required"
+                    data-i18n-state="required"
+                  ></span></label
+                ><input
+                  id="project-title"
+                  name="title"
+                  required
+                  data-i18n-placeholder="project-title"
+                  data-i18n-state="create.namePlaceholder"
+                />
+              </div>
+              <div class="field">
+                <label
+                  for="project-language"
+                  data-i18n="ui-project-create-language"
+                  id="ui-project-create-language"
+                  data-i18n-state="create.language"
+                ></label
+                ><select id="project-language" name="language">
+                  <option
+                    value="zh-Hans"
+                    data-i18n="ui-project-language-zhHans"
+                    id="ui-project-language-zhHans"
+                    data-i18n-state="language.zhHans"
+                  ></option>
+                  <option
+                    value="zh-Hant"
+                    data-i18n="ui-project-language-zhHant"
+                    id="ui-project-language-zhHant"
+                    data-i18n-state="language.zhHant"
+                  ></option>
+                  <option
+                    value="en"
+                    data-i18n="ui-project-language-en"
+                    id="ui-project-language-en"
+                    data-i18n-state="language.en"
+                  ></option>
+                </select>
+              </div>
+              <div class="field">
+                <label
+                  for="project-instructions"
+                  data-i18n="ui-project-create-instructions"
+                  id="ui-project-create-instructions"
+                  data-i18n-state="create.instructions"
+                ></label
+                ><textarea
+                  id="project-instructions"
+                  name="instructions"
+                  rows="2"
+                  data-i18n-placeholder="project-instructions"
+                  data-i18n-state="create.instructionsPlaceholder"
+                ></textarea>
+              </div>
+              <details class="optional-fields">
+                <summary
+                  data-i18n="ui-project-create-optionalDetails"
+                  id="ui-project-create-optionalDetails"
+                  data-i18n-state="create.optionalDetails"
+                ></summary>
+                <div class="field">
+                  <label
+                    for="project-reference"
+                    data-i18n="ui-project-create-reference"
+                    id="ui-project-create-reference"
+                    data-i18n-state="create.reference"
+                  ></label
+                  ><input id="project-reference" name="reference" />
+                </div>
+                <div class="field">
+                  <label
+                    for="project-description"
+                    data-i18n="ui-project-create-description"
+                    id="ui-project-create-description"
+                    data-i18n-state="create.description"
+                  ></label
+                  ><textarea
+                    id="project-description"
+                    name="description"
+                    rows="2"
+                  ></textarea>
+                </div>
+              </details>
+            </section>
+            <div class="form-footer">
+              <p
+                id="form-error"
+                class="error"
+                role="alert"
+                tabindex="-1"
+                hidden
+              ></p>
+              <p id="form-status" class="status" role="status"></p>
+              <button
+                id="save-project"
+                class="button"
+                type="submit"
+                data-i18n="save-project"
+                data-i18n-state="create.save"
+              ></button>
+            </div>
+          </form>
+          <aside class="storage-notice">
+            <svg
+              class=""
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="4" width="18" height="16" rx="3" />
+              <path d="M7 8h10M7 12h10M7 16h3" />
+            </svg>
+            <div>
+              <strong id="storage-notice"></strong>
+              <p id="storage-detail"></p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
