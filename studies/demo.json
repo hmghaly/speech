@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "demo",
+  "revision": 1,
+  "title": "English interpretation example",
+  "stimulusLanguage": "en",
+  "questions": [
+    {
+      "id": "demo-text",
+      "order": 0,
+      "presentationMode": "text_only",
+      "prompt": "Who has the telescope?",
+      "stimulus": {
+        "text": "I saw the boy with the telescope.",
+        "language": "en"
+      },
+      "options": [
+        { "id": "text-me", "text": "Me" },
+        { "id": "text-boy", "text": "The boy" }
+      ]
+    },
+    {
+      "id": "demo-audio",
+      "order": 1,
+      "presentationMode": "audio_only",
+      "prompt": "Who has the telescope?",
+      "stimulus": { "audioAssetId": "telescope-audio" },
+      "options": [
+        { "id": "audio-me", "text": "Me" },
+        { "id": "audio-boy", "text": "The boy" }
+      ]
+    },
+    {
+      "id": "demo-both",
+      "order": 2,
+      "presentationMode": "both",
+      "prompt": "Who has the telescope?",
+      "stimulus": {
+        "text": "I saw the boy with the telescope.",
+        "language": "en",
+        "audioAssetId": "telescope-audio"
+      },
+      "options": [
+        { "id": "both-me", "text": "Me" },
+        { "id": "both-boy", "text": "The boy" }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "telescope-audio",
+      "path": "./assets/audio/telescope.wav",
+      "mimeType": "audio/wav"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+/* Shared visual tokens; Tailwind utilities handle small layout and spacing choices. */
+:root {
+  --canvas: #f8f6f2;
+  --surface: #ffffff;
+  --ink: #30271f;
+  --brown: #493524;
+  --muted: #6b6055;
+  --gold: #f0bd4f;
+  --gold-ink: #76531a;
+  --gold-soft: #fbf1dc;
+  --border: #e4dcd1;
+  --control-border: #998773;
+  --error: #a3303b;
+  --focus: #82601f;
+  --font-ui:
+    "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+  --font-display:
+    "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", Georgia, serif;
+}

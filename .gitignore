@@ -1,0 +1,9 @@
+# Local planning deliverables and installed skill directories
+/design.md
+/implementation plan.md
+/.skills/
+/.agents/skills/
+/skills-lock.json
+
+# Local progress notes
+/CHECKLIST.md
