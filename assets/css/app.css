@@ -1,5 +1,18 @@
 @import url("./tokens.css");
 
+/* Serve the rounded brand face locally; Chinese uses the shared sans-serif fallback. */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/nunito-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
 /* Ordinary CSS: no build step and no Tailwind-only directives in this file. */
 @layer theme, base, components, utilities;
 
@@ -31,16 +44,21 @@
   p {
     margin: 0;
   }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
   h1 {
     font-size: clamp(30px, 3.2vw, 42px);
-    font-weight: 650;
+    font-weight: 700;
     line-height: 1.35;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.02em;
     text-wrap: balance;
   }
   h2 {
     font-size: 23px;
-    font-weight: 650;
+    font-weight: 700;
     line-height: 1.45;
   }
   p,
@@ -183,6 +201,8 @@
     align-items: center;
     gap: 8px;
     font-size: 14px;
+    font-family: var(--font-display);
+    font-weight: 600;
   }
   .nav a {
     display: inline-flex;
@@ -575,8 +595,9 @@
     border: 1px solid transparent;
     border-radius: 9px;
     font-size: 15px;
+    font-family: var(--font-display);
     line-height: 1.5;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     cursor: pointer;
   }
@@ -982,10 +1003,10 @@
   .hero h1 {
     width: 100%;
     font-family: var(--font-display);
-    font-size: clamp(52px, 7.5vw, 96px);
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.045em;
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
     white-space: pre-line;
     color: var(--brown);
   }
@@ -1053,7 +1074,7 @@
   }
   .project-library .section-heading h2 {
     font-size: 30px;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.01em;
   }
   .empty-library {
     justify-content: center;

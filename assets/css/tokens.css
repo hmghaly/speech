@@ -14,6 +14,5 @@
   --focus: #82601f;
   --font-ui:
     "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
-  --font-display:
-    "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", Georgia, serif;
+  --font-display: "Nunito", var(--font-ui);
 }
