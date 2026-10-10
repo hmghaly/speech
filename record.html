@@ -147,52 +147,85 @@
             <p id="project-instructions" class="intro" hidden></p>
           </div>
           <p id="page-error" class="error" hidden></p>
-          <section id="registration" class="panel">
-            <p
-              class="mb-6 text-muted"
-              data-i18n="ui-record-record-registerHelp"
-              id="ui-record-record-registerHelp"
-              data-i18n-state="record.registerHelp"
-            ></p>
-            <button
-              id="resume"
-              class="button secondary mb-6"
-              hidden
-              data-i18n="resume"
-              data-i18n-state="record.resume"
-            ></button>
-            <form id="username-form" novalidate>
-              <div class="field">
-                <label for="username"
-                  ><span
-                    data-i18n="ui-record-record-username"
-                    id="ui-record-record-username"
-                    data-i18n-state="record.username"
-                  ></span
-                  ><span
-                    class="required"
-                    data-i18n="ui-record-required"
-                    id="ui-record-required"
-                    data-i18n-state="required"
-                  ></span></label
-                ><input
-                  id="username"
-                  required
-                  autocapitalize="none"
-                  autocorrect="off"
-                  spellcheck="false"
-                  enterkeyhint="done"
-                  data-i18n-placeholder="username"
-                  aria-describedby="page-error"
-                  data-i18n-state="record.usernamePlaceholder"
-                />
+          <section id="registration" class="panel speaker-entry" hidden>
+            <div id="saved-session" class="speaker-session" hidden>
+              <div class="speaker-session-summary">
+                <h2
+                  id="speaker-session-heading"
+                  data-i18n="speaker-session-heading"
+                  data-i18n-state="record.resumeTitle"
+                ></h2>
+                <p id="speaker-session-identity"></p>
+                <p id="speaker-session-progress" class="helper"></p>
+              </div>
+              <div class="speaker-session-actions">
+                <button
+                  id="resume"
+                  class="button"
+                  type="button"
+                  data-i18n="resume"
+                  data-i18n-state="record.resume"
+                ></button>
+                <button
+                  id="new-session"
+                  class="button secondary"
+                  type="button"
+                  data-i18n="new-session"
+                  data-i18n-state="record.new"
+                ></button>
+              </div>
+            </div>
+            <form id="username-form" novalidate hidden>
+              <h2
+                id="speaker-signup-heading"
+                data-i18n="speaker-signup-heading"
+              ></h2>
+              <p
+                class="speaker-signup-help text-muted"
+                data-i18n="ui-record-record-registerHelp"
+                id="ui-record-record-registerHelp"
+                data-i18n-state="record.registerHelp"
+              ></p>
+              <div class="speaker-signup-fields">
+                <div class="field">
+                  <label for="username"
+                    ><span
+                      data-i18n="ui-record-record-username"
+                      id="ui-record-record-username"
+                      data-i18n-state="record.username"
+                    ></span
+                    ><span
+                      class="required"
+                      data-i18n="ui-record-required"
+                      id="ui-record-required"
+                      data-i18n-state="required"
+                    ></span></label
+                  ><input
+                    id="username"
+                    required
+                    autocapitalize="none"
+                    autocorrect="off"
+                    spellcheck="false"
+                    enterkeyhint="done"
+                    data-i18n-placeholder="username"
+                    aria-describedby="page-error"
+                    data-i18n-state="record.usernamePlaceholder"
+                  />
+                </div>
+                <button
+                  id="start-session"
+                  class="button"
+                  type="submit"
+                  data-i18n="start-session"
+                  data-i18n-state="record.start"
+                ></button>
               </div>
               <button
-                id="start-session"
-                class="button mt-6"
-                type="submit"
-                data-i18n="start-session"
-                data-i18n-state="record.start"
+                id="return-session"
+                class="button subtle speaker-return"
+                type="button"
+                hidden
+                data-i18n="return-session"
               ></button>
             </form>
           </section>

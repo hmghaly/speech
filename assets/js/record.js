@@ -14,6 +14,44 @@ let recordingContext;
 let registrationInput;
 let alive = true;
 
+// A saved session can resume directly; only a new session needs a username.
+function showRegistration(newSession = false) {
+  const saved = !!previous && !newSession;
+  get("saved-session").hidden = !saved;
+  get("username-form").hidden = saved;
+  get("return-session").hidden = !previous;
+  get("registration").hidden = false;
+  get("page-error").hidden = true;
+  get("username").removeAttribute("aria-invalid");
+  if (saved) {
+    const completed = !previous.nextItemId;
+    bind(
+      get("speaker-session-heading"),
+      completed ? "record.completedTitle" : "record.resumeTitle",
+    );
+    bind(get("speaker-session-identity"), "record.identity", {
+      name: previous.session.displayName,
+    });
+    bind(get("speaker-session-progress"), "record.progress", {
+      saved: previous.savedItemIds.length,
+      total: previous.requiredItemIds.length,
+    });
+    bind(get("resume"), completed ? "record.view" : "record.resume");
+  }
+}
+
+// Lock both entry paths while the provider is opening or creating a session.
+function registrationBusy(busy) {
+  for (const id of [
+    "start-session",
+    "username",
+    "resume",
+    "new-session",
+    "return-session",
+  ])
+    get(id).disabled = busy;
+}
+
 // One state owns the controls, preventing repeated clicks from overlapping async work.
 function setState(next) {
   state = next;
@@ -229,10 +267,7 @@ get("username-form").addEventListener("submit", async (event) => {
       };
     }
     state = "registering";
-    get("start-session").disabled =
-      get("username").disabled =
-      get("resume").disabled =
-        true;
+    registrationBusy(true);
     bind(get("start-session"), "record.starting");
     progress = await store.startSession(registrationInput, {
       operationId: registrationInput.id,
@@ -240,13 +275,11 @@ get("username-form").addEventListener("submit", async (event) => {
     if (alive) await renderSentence();
   } catch (failure) {
     state = "register";
-    get("username").setAttribute("aria-invalid", "true");
+    if (failure.code?.startsWith("username"))
+      get("username").setAttribute("aria-invalid", "true");
     showError(get("page-error"), failure);
   } finally {
-    get("start-session").disabled =
-      get("username").disabled =
-      get("resume").disabled =
-        false;
+    registrationBusy(false);
     bind(get("start-session"), "record.start");
   }
 });
@@ -257,16 +290,27 @@ get("username").addEventListener("input", () =>
 get("resume").addEventListener("click", async () => {
   if (state !== "register" || !previous) return;
   state = "loading";
-  get("resume").disabled = true;
+  get("page-error").hidden = true;
+  registrationBusy(true);
   try {
     progress = await store.getSession(previous.session.id);
-    await renderSentence();
+    if (alive) await renderSentence();
   } catch (failure) {
     state = "register";
     showError(get("page-error"), failure);
   } finally {
-    get("resume").disabled = false;
+    registrationBusy(false);
   }
+});
+get("new-session").addEventListener("click", () => {
+  if (state !== "register") return;
+  showRegistration(true);
+  get("username").focus();
+});
+get("return-session").addEventListener("click", () => {
+  if (state !== "register") return;
+  showRegistration();
+  get("resume").focus();
 });
 get("retry-recording").addEventListener("click", saveTake);
 get("retry-page").addEventListener("click", async () => {
@@ -303,8 +347,7 @@ async function loadProject() {
     }
     get("project-instructions").hidden = !project.instructions;
     previous = await store.findSession(project.id, "speaker");
-    get("registration").hidden = false;
-    get("resume").hidden = !previous;
+    showRegistration();
     state = "register";
     get("page-status").textContent = "";
   } catch (failure) {

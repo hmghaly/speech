@@ -1330,3 +1330,68 @@
     font-size: 21px;
   }
 }
+
+@layer components {
+  .speaker-entry {
+    border-color: #c7b79f;
+  }
+  .speaker-session {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 208px;
+    align-items: center;
+    gap: 28px;
+  }
+  .speaker-session-summary {
+    min-width: 0;
+  }
+  .speaker-session-summary h2,
+  #speaker-signup-heading {
+    font-size: 22px;
+  }
+  #speaker-session-identity {
+    margin-top: 10px;
+    color: var(--brown);
+    font-weight: 600;
+  }
+  .speaker-session-actions {
+    display: grid;
+    gap: 10px;
+  }
+  .speaker-session-actions .button {
+    width: 100%;
+    padding-inline: 14px;
+    text-align: center;
+  }
+  .speaker-signup-help {
+    max-width: 52ch;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .speaker-signup-fields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .speaker-signup-fields .field {
+    margin: 0;
+  }
+  .speaker-signup-fields .button {
+    min-height: 52px;
+  }
+  .speaker-return {
+    margin-top: 20px;
+    padding-inline: 0;
+  }
+}
+@media (max-width: 719px) {
+  .speaker-session,
+  .speaker-signup-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .speaker-session-actions {
+    gap: 10px;
+  }
+}

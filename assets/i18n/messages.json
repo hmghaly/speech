@@ -287,19 +287,21 @@
       }
     },
     "ui-record-record-registerHelp": {
-      "zh-Hans": "输入一个你能记住的用户名。无需邮箱或其他个人信息。",
-      "en": "Choose a memorable username. No email or other personal details are needed."
+      "zh-Hans": "输入本次朗读使用的用户名。无需邮箱或其他个人信息。",
+      "en": "Enter a username for this session. No email or other personal details are needed."
     },
     "resume": {
       "zh-Hans": {
         "listener.resume": "继续任务",
-        "record.resume": "继续上次的朗读",
-        "listener.view": "查看完成的任务"
+        "record.resume": "继续朗读",
+        "listener.view": "查看完成的任务",
+        "record.view": "查看完成的会话"
       },
       "en": {
         "listener.resume": "Continue session",
-        "record.resume": "Resume previous session",
-        "listener.view": "View completed session"
+        "record.resume": "Resume recording",
+        "listener.view": "View completed session",
+        "record.view": "View completed session"
       }
     },
     "ui-record-record-username": {
@@ -431,11 +433,13 @@
     "new-session": {
       "zh-Hans": {
         "listener.new": "开始新任务",
-        "listener.start": "开始任务"
+        "listener.start": "开始任务",
+        "record.new": "开始新会话"
       },
       "en": {
         "listener.new": "Start new session",
-        "listener.start": "Start listening"
+        "listener.start": "Start listening",
+        "record.new": "Start new session"
       }
     },
     "play-audio": {
@@ -793,6 +797,32 @@
         "listener.resumeHelp": "Saved {saved} of {total} answers. Continue with the next unanswered question.",
         "listener.completedHelp": "All {total} answers are saved. Start again or view the completed session."
       }
+    },
+    "speaker-session-heading": {
+      "zh-Hans": {
+        "record.resumeTitle": "继续上次的朗读",
+        "record.completedTitle": "上次的朗读已完成"
+      },
+      "en": {
+        "record.resumeTitle": "Continue your recording",
+        "record.completedTitle": "Your recording is complete"
+      }
+    },
+    "speaker-session-identity": {
+      "zh-Hans": "用户名：{name}",
+      "en": "Recording as {name}"
+    },
+    "speaker-session-progress": {
+      "zh-Hans": "已保存 {saved} / {total} 条",
+      "en": "Saved {saved} of {total} recordings"
+    },
+    "speaker-signup-heading": {
+      "zh-Hans": "开始一次新的朗读",
+      "en": "Start a recording session"
+    },
+    "return-session": {
+      "zh-Hans": "返回已保存的会话",
+      "en": "Back to saved session"
     }
   },
   "templates": {
