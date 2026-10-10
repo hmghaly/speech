@@ -12,7 +12,13 @@ Open root `index.html` with VS Code Live Server, or use an existing static serve
 live-server . --no-browser
 ```
 
-No package installation or build step. Use localhost or HTTPS for microphone access; the Tailwind CDN needs internet access.
+If Live Server is unavailable, serve the same files with Python:
+
+```sh
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Then open <http://localhost:8000>. No project dependencies or build step. Use localhost or HTTPS for microphone access; the Tailwind CDN needs internet access.
 
 ## Use
 
@@ -23,7 +29,32 @@ No package installation or build step. Use localhost or HTTPS for microphone acc
 
 Data stays in IndexedDB in the same browser and origin; project links do not transfer it across devices. Server integration changes the provider in `assets/js/storage.js`.
 
-Custom CSS/JS lives in `assets/css/` and `assets/js/`; interface translations are keyed by DOM ID in `assets/i18n/messages.json` (Chinese by default; English also included).
+## Project structure
+
+```text
+index.html             Project listing
+project.html           Project creation and sentence import
+record.html            Speaker signup and recording
+listener.html          Listener questions and audio playback
+assets/
+  css/                 Design tokens and shared styles
+  js/
+    index.js           Project listing controller
+    project.js         Project creation controller
+    record.js          Speaker session controller
+    listener.js        Listener session controller
+    ui.js              Shared UI and translation helpers
+    data.js            Validation, imports and progress
+    recorder.js        Microphone recording
+    storage.js         IndexedDB provider and adapter selection
+    http-storage.js    Optional server integration example
+  i18n/messages.json   Chinese/English text keyed by DOM ID
+  images/              Company logo
+  audio/               Demo audio
+studies/demo.json      Listener study example
+tests/core.test.mjs   Focused regression tests
+docs/                  Storage and visual design guides
+```
 
 ## Documentation
 
