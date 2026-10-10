@@ -34,10 +34,6 @@
       "zh-Hans": "跳转到内容",
       "en": "Skip to content"
     },
-    "ui-index-brand": {
-      "zh-Hans": "Champolu",
-      "en": "Champolu"
-    },
     "ui-index-nav-label": {
       "zh-Hans": "主导航",
       "en": "Main navigation"
@@ -109,10 +105,6 @@
     "ui-project-skip": {
       "zh-Hans": "跳转到内容",
       "en": "Skip to content"
-    },
-    "ui-project-brand": {
-      "zh-Hans": "Champolu",
-      "en": "Champolu"
     },
     "ui-project-nav-label": {
       "zh-Hans": "主导航",
@@ -243,10 +235,6 @@
     "ui-record-skip": {
       "zh-Hans": "跳转到内容",
       "en": "Skip to content"
-    },
-    "ui-record-brand": {
-      "zh-Hans": "Champolu",
-      "en": "Champolu"
     },
     "ui-record-nav-label": {
       "zh-Hans": "主导航",
@@ -385,10 +373,6 @@
     "ui-listener-skip": {
       "zh-Hans": "跳转到内容",
       "en": "Skip to content"
-    },
-    "ui-listener-brand": {
-      "zh-Hans": "Champolu",
-      "en": "Champolu"
     },
     "ui-listener-nav-label": {
       "zh-Hans": "主导航",
@@ -771,8 +755,8 @@
       }
     },
     "footer-copyright": {
-      "zh-Hans": "© {year} Champolu",
-      "en": "© {year} Champolu"
+      "zh-Hans": "ARBSQ · {year}",
+      "en": "ARBSQ · {year}"
     },
     "listener-session-heading": {
       "zh-Hans": {
@@ -823,6 +807,22 @@
     "return-session": {
       "zh-Hans": "返回已保存的会话",
       "en": "Back to saved session"
+    },
+    "ui-index-home": {
+      "zh-Hans": "ARBSQ 首页",
+      "en": "ARBSQ home"
+    },
+    "ui-project-home": {
+      "zh-Hans": "ARBSQ 首页",
+      "en": "ARBSQ home"
+    },
+    "ui-record-home": {
+      "zh-Hans": "ARBSQ 首页",
+      "en": "ARBSQ home"
+    },
+    "ui-listener-home": {
+      "zh-Hans": "ARBSQ 首页",
+      "en": "ARBSQ home"
     }
   },
   "templates": {

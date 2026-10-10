@@ -1,5 +1,3 @@
-<img src="assets/images/champolu-logo.png" alt="Champolu" width="96">
-
 # Speech research
 
 A Chinese-first, static frontend for creating sentence projects, recording speakers and collecting listener answers. Uses vanilla HTML/JavaScript and the Tailwind browser CDN.
@@ -49,7 +47,7 @@ assets/
     storage.js         IndexedDB provider and adapter selection
     http-storage.js    Optional server integration example
   i18n/messages.json   Chinese/English text keyed by DOM ID
-  images/              Company logo
+  images/              Platform logo and empty-state artwork
   audio/               Demo audio
 studies/demo.json      Listener study example
 tests/core.test.mjs   Focused regression tests
@@ -59,6 +57,6 @@ docs/                  Storage and visual design guides
 ## Documentation
 
 - [Storage](docs/storage.md): local persistence, data formats and server adapter integration.
-- [Visual design](docs/visual-design.md): branding, layouts, accessibility and internationalization.
+- [Visual design](docs/visual-design.md): layouts, accessibility and internationalization.
 
 Optional checks (Node.js 22.7+): `node tests/core.test.mjs`. Real microphone and target-device verification remain pending.

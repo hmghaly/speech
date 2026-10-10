@@ -1,6 +1,6 @@
 @import url("./tokens.css");
 
-/* Serve the rounded brand face locally; Chinese uses the shared sans-serif fallback. */
+/* Serve the heading face locally; Chinese uses the shared sans-serif fallback. */
 @font-face {
   font-family: "Nunito";
   font-style: normal;
@@ -176,19 +176,19 @@
     gap: 24px;
     min-height: 92px;
   }
-  .brand {
-    display: flex;
+  .home-link {
+    display: inline-flex;
     align-items: center;
-    gap: 13px;
+    justify-content: center;
+    flex: none;
+    min-width: 44px;
+    min-height: 44px;
     text-decoration: none;
   }
-  /* The original artwork sits below center within its transparent image canvas. */
-  .brand-logo {
+  .home-logo {
     display: block;
-    width: 92px;
-    height: auto;
-    flex: none;
-    transform: translateY(-5px);
+    width: auto;
+    height: 64px;
   }
   .header-actions {
     display: flex;
@@ -884,9 +884,8 @@
     padding-block: 10px;
     gap: 8px;
   }
-  .brand-logo {
-    width: 64px;
-    transform: translateY(-4px);
+  .home-logo {
+    height: 56px;
   }
   .header-actions {
     gap: 8px;
