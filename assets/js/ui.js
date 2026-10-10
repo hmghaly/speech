@@ -12,7 +12,23 @@ const fallback = {
 };
 let messages = { "page-error": fallback, "form-error": fallback };
 let templates = {};
-export const locale = document.documentElement.lang === "en" ? "en" : "zh-Hans";
+const languagePreference = "speech.interface.language";
+
+// Prefer an explicit language choice while keeping Chinese as the starting language.
+function interfaceLocale() {
+  const requested = new URLSearchParams(location.search).get("lang");
+  if (["en", "zh-Hans"].includes(requested)) return requested;
+  try {
+    const saved = localStorage.getItem(languagePreference);
+    if (["en", "zh-Hans"].includes(saved)) return saved;
+  } catch {
+    // A URL choice still works when browser preferences cannot be stored.
+  }
+  return document.documentElement.lang === "en" ? "en" : "zh-Hans";
+}
+
+export const locale = interfaceLocale();
+document.documentElement.lang = locale;
 
 // The DOM ID selects the translation; a state selects changing button/status copy.
 export function bind(element, state, params = {}, target = "textContent") {
@@ -80,6 +96,47 @@ export function time(seconds) {
   );
 }
 
+// Reuse the desktop links in a modal sidebar with native keyboard focus handling.
+function setupNavigation() {
+  const toggle = document.querySelector("#menu-toggle");
+  const menu = document.querySelector("#mobile-menu");
+  const navigation = document.querySelector(".header-actions > .nav");
+  const header = navigation.parentElement;
+  toggle.addEventListener("click", () => {
+    menu.querySelector(".mobile-menu-links").append(navigation);
+    menu.showModal();
+    toggle.setAttribute("aria-expanded", "true");
+    document.documentElement.classList.add("menu-open");
+  });
+  menu.addEventListener("close", () => {
+    header.prepend(navigation);
+    toggle.setAttribute("aria-expanded", "false");
+    document.documentElement.classList.remove("menu-open");
+  });
+  document
+    .querySelector("#menu-close")
+    .addEventListener("click", () => menu.close());
+  navigation.addEventListener("click", (event) => {
+    if (menu.open && event.target.closest("a")) menu.close();
+  });
+  menu.addEventListener("click", (event) => {
+    const bounds = menu.getBoundingClientRect();
+    if (
+      event.target === menu &&
+      (event.clientX < bounds.left ||
+        event.clientX > bounds.right ||
+        event.clientY < bounds.top ||
+        event.clientY > bounds.bottom)
+    )
+      menu.close();
+  });
+  window
+    .matchMedia("(min-width: 960px)")
+    .addEventListener("change", (event) => {
+      if (event.matches && menu.open) menu.close();
+    });
+}
+
 // Loads one tiny dictionary and wires the shared shell before each page controller starts.
 export async function setup(store) {
   try {
@@ -107,6 +164,19 @@ export async function setup(store) {
     ))
       bind(element, element.dataset.i18nState || element.id, {}, target);
   }
+  setupNavigation();
+  const language = document.querySelector("#interface-language");
+  language.value = locale;
+  language.addEventListener("change", () => {
+    try {
+      localStorage.setItem(languagePreference, language.value);
+    } catch {
+      // Fall back to the current URL without changing project or study parameters.
+    }
+    const url = new URL(location.href);
+    url.searchParams.set("lang", language.value);
+    location.assign(url);
+  });
   const remote = store.capabilities.persistence === "remote";
   bind(
     document.querySelector("#storage-notice"),

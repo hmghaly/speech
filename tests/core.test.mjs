@@ -187,7 +187,7 @@ test("interface translations use stable DOM IDs with matching English and Chines
       new URL("../" + page + ".html", import.meta.url),
       "utf8",
     );
-    assert.match(html, /<html lang="zh-Hans">/);
+    assert.match(html, /<html lang="zh-Hans" translate="no">/);
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
     assert.equal(new Set(ids).size, ids.length, page + ": duplicate ID");
     for (const [tag] of html.matchAll(/<[^!][^>]*data-i18n[^>]*>/g)) {

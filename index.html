@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="zh-Hans">
+<html lang="zh-Hans" translate="no">
   <head>
     <meta charset="utf-8" />
+    <meta name="google" content="notranslate" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
@@ -42,32 +43,68 @@
             alt=""
             aria-hidden="true"
         /></a>
-        <nav
-          class="nav"
-          data-i18n-aria-label="ui-index-nav-label"
-          id="ui-index-nav-label"
-          data-i18n-state="nav.label"
-        >
-          <a
-            href="./index.html"
-            aria-current="page"
-            data-i18n="ui-index-nav-projects"
-            id="ui-index-nav-projects"
-            data-i18n-state="nav.projects"
-          ></a
-          ><a
-            href="./project.html"
-            data-i18n="ui-index-nav-create"
-            id="ui-index-nav-create"
-            data-i18n-state="nav.create"
-          ></a
-          ><a
-            href="./listener.html?study=demo"
-            data-i18n="ui-index-nav-listener"
-            id="ui-index-nav-listener"
-            data-i18n-state="nav.listener"
-          ></a>
-        </nav>
+        <div class="header-actions">
+          <nav
+            class="nav"
+            data-i18n-aria-label="ui-index-nav-label"
+            id="ui-index-nav-label"
+            data-i18n-state="nav.label"
+          >
+            <a
+              href="./index.html"
+              aria-current="page"
+              data-i18n="ui-index-nav-projects"
+              id="ui-index-nav-projects"
+              data-i18n-state="nav.projects"
+            ></a
+            ><a
+              href="./project.html"
+              data-i18n="ui-index-nav-create"
+              id="ui-index-nav-create"
+              data-i18n-state="nav.create"
+            ></a
+            ><a
+              href="./listener.html?study=demo"
+              data-i18n="ui-index-nav-listener"
+              id="ui-index-nav-listener"
+              data-i18n-state="nav.listener"
+            ></a>
+          </nav>
+          <select
+            id="interface-language"
+            class="language-select"
+            data-i18n-aria-label="interface-language"
+            data-i18n-state="language.label"
+            aria-label="界面语言"
+          >
+            <option
+              id="ui-language-chinese"
+              value="zh-Hans"
+              data-i18n="ui-language-chinese"
+            >
+              中文
+            </option>
+            <option
+              id="ui-language-english"
+              value="en"
+              data-i18n="ui-language-english"
+            >
+              English
+            </option>
+          </select>
+          <button
+            id="menu-toggle"
+            class="menu-toggle"
+            type="button"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-haspopup="dialog"
+            data-i18n-aria-label="menu-toggle"
+            aria-label="打开导航菜单"
+          >
+            <span class="menu-icon" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
     </header>
     <main id="main" class="home-page">
@@ -171,5 +208,25 @@
         </p>
       </div>
     </footer>
+    <dialog
+      id="mobile-menu"
+      class="mobile-menu"
+      aria-labelledby="mobile-menu-title"
+    >
+      <div class="mobile-menu-heading">
+        <h2 id="mobile-menu-title" data-i18n="mobile-menu-title"></h2>
+        <button
+          id="menu-close"
+          class="menu-close"
+          type="button"
+          data-i18n-aria-label="menu-close"
+          aria-label="关闭导航菜单"
+          autofocus
+        >
+          <span class="close-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="mobile-menu-links"></div>
+    </dialog>
   </body>
 </html>

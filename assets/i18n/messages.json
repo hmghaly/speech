@@ -2,6 +2,30 @@
   "schemaVersion": 2,
   "defaultLocale": "zh-Hans",
   "messages": {
+    "menu-toggle": {
+      "zh-Hans": "打开导航菜单",
+      "en": "Open menu"
+    },
+    "menu-close": {
+      "zh-Hans": "关闭导航菜单",
+      "en": "Close menu"
+    },
+    "mobile-menu-title": {
+      "zh-Hans": "导航菜单",
+      "en": "Menu"
+    },
+    "interface-language": {
+      "zh-Hans": "界面语言",
+      "en": "Interface language"
+    },
+    "ui-language-chinese": {
+      "zh-Hans": "中文",
+      "en": "中文"
+    },
+    "ui-language-english": {
+      "zh-Hans": "English",
+      "en": "English"
+    },
     "ui-projects-document-title": {
       "zh-Hans": "语音研究项目",
       "en": "Speech research projects"
@@ -19,16 +43,16 @@
       "en": "Main navigation"
     },
     "ui-index-nav-projects": {
-      "zh-Hans": "项目",
-      "en": "Projects"
+      "zh-Hans": "朗读项目",
+      "en": "Recording Projects"
     },
     "ui-index-nav-create": {
-      "zh-Hans": "创建项目",
-      "en": "Create Project"
+      "zh-Hans": "新建项目",
+      "en": "New Project"
     },
     "ui-index-nav-listener": {
-      "zh-Hans": "听辨示例",
-      "en": "Listening Example"
+      "zh-Hans": "听辨演示",
+      "en": "Listening Demo"
     },
     "ui-index-projects-heroHeadline": {
       "zh-Hans": "让语言研究\n被听见。",
@@ -43,8 +67,8 @@
       "en": "Create Project"
     },
     "ui-index-nav-listener-2": {
-      "zh-Hans": "听辨示例",
-      "en": "Listening Example"
+      "zh-Hans": "听辨演示",
+      "en": "Listening Demo"
     },
     "ui-index-projects-list": {
       "zh-Hans": "已保存的项目",
@@ -95,16 +119,16 @@
       "en": "Main navigation"
     },
     "ui-project-nav-projects": {
-      "zh-Hans": "项目",
-      "en": "Projects"
+      "zh-Hans": "朗读项目",
+      "en": "Recording Projects"
     },
     "ui-project-nav-create": {
-      "zh-Hans": "创建项目",
-      "en": "Create Project"
+      "zh-Hans": "新建项目",
+      "en": "New Project"
     },
     "ui-project-nav-listener": {
-      "zh-Hans": "听辨示例",
-      "en": "Listening Example"
+      "zh-Hans": "听辨演示",
+      "en": "Listening Demo"
     },
     "ui-project-create-guideTitle": {
       "zh-Hans": "准备一个朗读项目",
@@ -229,8 +253,8 @@
       "en": "Main navigation"
     },
     "ui-record-nav-projects": {
-      "zh-Hans": "项目",
-      "en": "Projects"
+      "zh-Hans": "朗读项目",
+      "en": "Recording Projects"
     },
     "ui-record-record-guideTitle": {
       "zh-Hans": "把文字变成声音",
@@ -369,8 +393,8 @@
       "en": "Main navigation"
     },
     "ui-listener-nav-projects": {
-      "zh-Hans": "项目",
-      "en": "Projects"
+      "zh-Hans": "朗读项目",
+      "en": "Recording Projects"
     },
     "ui-listener-listener-guideTitle": {
       "zh-Hans": "参与说明",

@@ -172,6 +172,11 @@
     flex: none;
     transform: translateY(-5px);
   }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
   .nav {
     display: flex;
     flex-wrap: wrap;
@@ -196,6 +201,112 @@
   }
   .nav a:active {
     background: #f5e9d4;
+  }
+  .language-select {
+    flex: none;
+    width: 96px;
+    max-width: 100%;
+    height: 44px;
+    min-height: 44px;
+    padding: 0 10px;
+    border-color: var(--border);
+    background: transparent;
+    font-size: 14px;
+  }
+  .menu-toggle,
+  .menu-close {
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--brown);
+    cursor: pointer;
+  }
+  .menu-toggle {
+    display: none;
+  }
+  .menu-close {
+    display: inline-flex;
+  }
+  .menu-toggle:active,
+  .menu-close:active {
+    background: var(--gold-soft);
+  }
+  .menu-icon {
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    box-shadow:
+      0 -6px currentColor,
+      0 6px currentColor;
+  }
+  .close-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+  .close-icon::before,
+  .close-icon::after {
+    content: "";
+    position: absolute;
+    inset: 9px 0 auto;
+    height: 2px;
+    background: currentColor;
+    transform: rotate(45deg);
+  }
+  .close-icon::after {
+    transform: rotate(-45deg);
+  }
+  html.menu-open {
+    overflow: hidden;
+  }
+  .mobile-menu {
+    margin: 0 0 0 auto;
+    width: min(320px, calc(100% - 32px));
+    max-width: none;
+    height: 100dvh;
+    max-height: 100dvh;
+    padding: max(20px, env(safe-area-inset-top, 0px))
+      max(20px, env(safe-area-inset-right, 0px))
+      max(20px, env(safe-area-inset-bottom, 0px)) 20px;
+    border: 0;
+    border-left: 1px solid var(--border);
+    background: var(--canvas);
+    color: var(--ink);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .mobile-menu::backdrop {
+    background: rgb(48 39 31 / 32%);
+  }
+  .mobile-menu-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu-heading h2 {
+    font-size: 20px;
+  }
+  .mobile-menu .nav {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .mobile-menu .nav a {
+    justify-content: flex-start;
+    min-height: 52px;
+    padding: 14px 16px;
+    font-size: 16px;
   }
   .page {
     padding-top: 48px;
@@ -698,6 +809,11 @@
     margin-top: 20px;
   }
 }
+@media (pointer: coarse) {
+  .language-select {
+    font-size: 16px;
+  }
+}
 @media (hover: hover) and (pointer: fine) {
   .button:not(:disabled):hover {
     background: #f0ca7b;
@@ -720,6 +836,12 @@
   }
 }
 @media (max-width: 959px) {
+  .header-actions > .nav {
+    display: none;
+  }
+  .menu-toggle {
+    display: inline-flex;
+  }
   .task-layout {
     grid-template-columns: 210px minmax(0, 1fr);
     gap: 30px;
@@ -745,14 +867,8 @@
     width: 64px;
     transform: translateY(-4px);
   }
-  .nav {
-    justify-content: flex-end;
-    gap: 2px;
-  }
-  .nav a {
-    padding-inline: 8px;
-    min-height: 44px;
-    font-size: 12px;
+  .header-actions {
+    gap: 8px;
   }
   .page {
     padding-top: 32px;
