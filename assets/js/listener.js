@@ -160,7 +160,11 @@ async function renderQuestion() {
   if (question.instructions) {
     get("question-instructions").textContent = question.instructions;
     get("question-instructions").dataset.content = "question.instructions";
-  } else bind(get("question-instructions"), "listener.instruction");
+  } else
+    bind(
+      get("question-instructions"),
+      "listener.instruction." + question.presentationMode,
+    );
   const showText = question.presentationMode !== "audio_only";
   get("question-sentence").hidden = !showText;
   get("question-sentence").textContent = showText ? question.stimulus.text : "";
@@ -199,6 +203,30 @@ async function renderQuestion() {
   focusHeading(get("question-prompt"));
 }
 
+// Explain the saved session before offering its primary action.
+function showSessionChoice() {
+  const completed = previous && !previous.nextItemId;
+  const variant = !previous ? "start" : completed ? "completed" : "resume";
+  bind(get("listener-session-heading"), "listener." + variant + "Title");
+  bind(get("listener-session-description"), "listener." + variant + "Help", {
+    saved: previous?.savedItemIds.length || 0,
+    total: previous?.requiredItemIds.length || study.questions.length,
+  });
+  bind(get("resume"), completed ? "listener.view" : "listener.resume");
+  bind(get("new-session"), previous ? "listener.new" : "listener.start");
+  const resume = get("resume");
+  const start = get("new-session");
+  const continueSession = previous && !completed;
+  resume.hidden = !previous;
+  resume.classList.toggle("secondary", !continueSession);
+  start.classList.toggle("secondary", Boolean(continueSession));
+  // Keep the primary action first in both the layout and keyboard order.
+  get("listener-start")
+    .querySelector(".listener-session-actions")
+    .append(...(continueSession ? [resume, start] : [start, resume]));
+  get("listener-start").hidden = false;
+}
+
 // A failed start retries its original identity; resuming reloads confirmed progress.
 async function startSession(resume = false) {
   if (!["start", "loading"].includes(state)) return;
@@ -221,8 +249,7 @@ async function startSession(resume = false) {
     if (alive) await renderQuestion();
   } catch (failure) {
     state = "start";
-    get("listener-start").hidden = false;
-    get("resume").hidden = !previous;
+    showSessionChoice();
     showError(get("page-error"), failure);
   } finally {
     get("new-session").disabled = get("resume").disabled = false;
@@ -309,7 +336,7 @@ async function loadStudy() {
     previous = await store.findSession(study.id, "listener");
     state = "start";
     if (previous) {
-      get("listener-start").hidden = false;
+      showSessionChoice();
       get("page-status").textContent = "";
     } else await startSession();
   } catch (failure) {

@@ -6,16 +6,6 @@ const error = document.querySelector("#page-error");
 const reload = document.querySelector("#reload");
 const pageStatus = document.querySelector("#page-status");
 
-// This decorative document symbol contains fixed SVG only, never project content.
-function projectSymbol(className) {
-  const symbol = document.createElement("span");
-  symbol.className = className;
-  symbol.setAttribute("aria-hidden", "true");
-  symbol.innerHTML =
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2h9l5 5v15H5V2Zm9 0v5h5M8 11h8m-8 4h8m-8 4h5"/></svg>';
-  return symbol;
-}
-
 // Renders saved project summaries without interpreting any user-supplied HTML.
 async function loadProjects() {
   reload.hidden = true;
@@ -24,6 +14,8 @@ async function loadProjects() {
   try {
     const projects = await store.listProjects();
     list.replaceChildren();
+    document.querySelector("#local-link-note").hidden =
+      !projects.length || store.capabilities.linkScope !== "browser";
     if (!projects.length) {
       const empty = document.createElement("div");
       empty.className = "empty-library";
@@ -41,7 +33,14 @@ async function loadProjects() {
         textNode("p", "projects.emptyHelp", {}, "ui-projects-empty-help"),
         create,
       );
-      empty.append(projectSymbol("empty-symbol"), copy);
+      const illustration = document.createElement("img");
+      illustration.className = "empty-projects-art";
+      illustration.src = "./assets/images/empty-projects.svg";
+      illustration.alt = "";
+      illustration.width = 180;
+      illustration.height = 128;
+      illustration.setAttribute("aria-hidden", "true");
+      empty.append(illustration, copy);
       list.append(empty);
     }
     for (const project of projects) {
@@ -49,8 +48,11 @@ async function loadProjects() {
       row.className = "project-row";
       const prefix = "ui-projects-" + project.id;
       const details = document.createElement("div");
-      const title = content("h3", project.title, prefix + "-title");
-      title.className = "project-title";
+      const heading = document.createElement("h3");
+      heading.className = "project-title";
+      const title = content("a", project.title, prefix + "-title");
+      title.href = "./record.html?project=" + encodeURIComponent(project.id);
+      heading.append(title);
       const date = new Intl.DateTimeFormat(locale, {
         dateStyle: "medium",
       }).format(new Date(project.createdAt));
@@ -74,7 +76,7 @@ async function loadProjects() {
           "ui-projects-{id}-date",
         ),
       );
-      details.append(title, metadata);
+      details.append(heading, metadata);
       const actions = document.createElement("div");
       actions.className = "controls shrink-0";
       const open = textNode(
@@ -103,7 +105,7 @@ async function loadProjects() {
         }
       });
       actions.append(open, copy);
-      row.append(projectSymbol("project-symbol"), details, actions);
+      row.append(details, actions);
       list.append(row);
     }
     status(pageStatus, "projects.loaded", { count: projects.length });

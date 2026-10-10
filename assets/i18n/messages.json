@@ -14,10 +14,6 @@
       "zh-Hans": "Champolu",
       "en": "Champolu"
     },
-    "ui-index-brand-context": {
-      "zh-Hans": "语音与语言研究",
-      "en": "Speech and language research"
-    },
     "ui-index-nav-label": {
       "zh-Hans": "主导航",
       "en": "Main navigation"
@@ -49,14 +45,6 @@
     "ui-index-nav-listener-2": {
       "zh-Hans": "听辨示例",
       "en": "Listening Example"
-    },
-    "ui-index-projects-signalRead": {
-      "zh-Hans": "朗读，记录声音",
-      "en": "Read and record"
-    },
-    "ui-index-projects-signalListen": {
-      "zh-Hans": "听辨，理解语言",
-      "en": "Listen and understand"
     },
     "ui-index-projects-list": {
       "zh-Hans": "已保存的项目",
@@ -101,10 +89,6 @@
     "ui-project-brand": {
       "zh-Hans": "Champolu",
       "en": "Champolu"
-    },
-    "ui-project-brand-context": {
-      "zh-Hans": "语音与语言研究",
-      "en": "Speech and language research"
     },
     "ui-project-nav-label": {
       "zh-Hans": "主导航",
@@ -240,10 +224,6 @@
       "zh-Hans": "Champolu",
       "en": "Champolu"
     },
-    "ui-record-brand-context": {
-      "zh-Hans": "语音与语言研究",
-      "en": "Speech and language research"
-    },
     "ui-record-nav-label": {
       "zh-Hans": "主导航",
       "en": "Main navigation"
@@ -288,12 +268,14 @@
     },
     "resume": {
       "zh-Hans": {
-        "listener.resume": "继续上次的听辨",
-        "record.resume": "继续上次的朗读"
+        "listener.resume": "继续任务",
+        "record.resume": "继续上次的朗读",
+        "listener.view": "查看完成的任务"
       },
       "en": {
-        "listener.resume": "Resume previous session",
-        "record.resume": "Resume previous session"
+        "listener.resume": "Continue session",
+        "record.resume": "Resume previous session",
+        "listener.view": "View completed session"
       }
     },
     "ui-record-record-username": {
@@ -382,10 +364,6 @@
       "zh-Hans": "Champolu",
       "en": "Champolu"
     },
-    "ui-listener-brand-context": {
-      "zh-Hans": "语音与语言研究",
-      "en": "Speech and language research"
-    },
     "ui-listener-nav-label": {
       "zh-Hans": "主导航",
       "en": "Main navigation"
@@ -395,8 +373,8 @@
       "en": "Projects"
     },
     "ui-listener-listener-guideTitle": {
-      "zh-Hans": "听见，读懂，选择",
-      "en": "Listen, read and choose"
+      "zh-Hans": "参与说明",
+      "en": "How to take part"
     },
     "ui-listener-listener-guideIntro": {
       "zh-Hans": "根据呈现的内容，回答每一个问题。",
@@ -423,12 +401,18 @@
       "en": "Feature example, not a live study"
     },
     "ui-listener-listener-demoHelp": {
-      "zh-Hans": "示例展示三种呈现方式，使用英语合成语音，仅供功能演示。真实研究请替换为经研究人员确认的录音。",
-      "en": "This example shows all three presentation modes using synthetic English speech for demonstration only. Replace it with researcher-approved recordings for a real study."
+      "zh-Hans": "本示例使用英语合成语音。用于真实研究时，请替换为研究人员确认的录音。",
+      "en": "This demo uses synthetic English speech. Use researcher-approved recordings for a live study."
     },
     "new-session": {
-      "zh-Hans": "开始新的听辨",
-      "en": "Start a new session"
+      "zh-Hans": {
+        "listener.new": "开始新任务",
+        "listener.start": "开始任务"
+      },
+      "en": {
+        "listener.new": "Start new session",
+        "listener.start": "Start listening"
+      }
     },
     "play-audio": {
       "zh-Hans": {
@@ -561,8 +545,18 @@
       "en": "Saved {saved} of {total} answers"
     },
     "question-instructions": {
-      "zh-Hans": "请选择一个答案。",
-      "en": "Choose one answer."
+      "zh-Hans": {
+        "listener.instruction": "请选择一个答案。",
+        "listener.instruction.text_only": "请阅读下面的句子，选择一个答案。",
+        "listener.instruction.audio_only": "请听录音，选择一个答案。",
+        "listener.instruction.both": "请阅读句子并听录音，选择一个答案。"
+      },
+      "en": {
+        "listener.instruction": "Choose one answer.",
+        "listener.instruction.text_only": "Read the sentence below and choose one answer.",
+        "listener.instruction.audio_only": "Listen to the recording and choose one answer.",
+        "listener.instruction.both": "Read the sentence, listen to the recording and choose one answer."
+      }
     },
     "answer-status": {
       "zh-Hans": "正在保存答案…",
@@ -746,6 +740,34 @@
         "error.unsupportedMedia": "The recording format or size is unsupported. Record again: up to two minutes and 10 MB.",
         "error.usernameRequired": "Enter a username.",
         "error.usernameTooLong": "The username must not exceed 40 characters."
+      }
+    },
+    "footer-copyright": {
+      "zh-Hans": "© {year} Champolu",
+      "en": "© {year} Champolu"
+    },
+    "listener-session-heading": {
+      "zh-Hans": {
+        "listener.startTitle": "准备开始听辨",
+        "listener.resumeTitle": "继续上次的听辨",
+        "listener.completedTitle": "上次的听辨已完成"
+      },
+      "en": {
+        "listener.startTitle": "Ready to listen",
+        "listener.resumeTitle": "Continue where you left off",
+        "listener.completedTitle": "Your previous session is complete"
+      }
+    },
+    "listener-session-description": {
+      "zh-Hans": {
+        "listener.startHelp": "阅读或听录音，每道题选择一个答案。",
+        "listener.resumeHelp": "已保存 {saved} / {total} 个答案。继续后将显示下一个未完成的问题。",
+        "listener.completedHelp": "全部 {total} 个答案已保存。开始新任务，或查看完成记录。"
+      },
+      "en": {
+        "listener.startHelp": "Read or listen, then choose one answer per question.",
+        "listener.resumeHelp": "Saved {saved} of {total} answers. Continue with the next unanswered question.",
+        "listener.completedHelp": "All {total} answers are saved. Start again or view the completed session."
       }
     }
   },

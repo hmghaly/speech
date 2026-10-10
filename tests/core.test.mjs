@@ -77,6 +77,27 @@ test("questions require a valid presentation mode and two to four distinct optio
     questions: [question],
   };
   assert.doesNotThrow(() => validateStudy(study));
+  const fourOptions = [
+    ...question.options,
+    { id: "c", text: "Three" },
+    { id: "d", text: "Four" },
+  ];
+  assert.doesNotThrow(() =>
+    validateStudy({
+      ...study,
+      questions: [{ ...question, options: fourOptions }],
+    }),
+  );
+  assert.throws(
+    () =>
+      validateStudy({
+        ...study,
+        questions: [
+          { ...question, options: [...fourOptions, { id: "e", text: "Five" }] },
+        ],
+      }),
+    { code: "invalidStudy" },
+  );
   assert.throws(
     () =>
       validateStudy({

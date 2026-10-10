@@ -98,7 +98,9 @@ export async function setup(store) {
     });
   }
   for (const element of document.querySelectorAll("[data-i18n]"))
-    bind(element, element.dataset.i18nState || element.id);
+    bind(element, element.dataset.i18nState || element.id, {
+      year: new Date().getFullYear(),
+    });
   for (const target of ["placeholder", "aria-label"]) {
     for (const element of document.querySelectorAll(
       "[data-i18n-" + target + "]",
