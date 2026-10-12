@@ -11,7 +11,7 @@ import {
 } from "./ui.js";
 
 const get = (id) => document.getElementById(id);
-const studyId = new URLSearchParams(location.search).get("study") || "demo";
+const studyId = new URLSearchParams(location.search).get("study") || "sample";
 let study;
 let progress;
 let previous;
