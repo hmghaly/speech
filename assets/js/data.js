@@ -145,6 +145,62 @@ export function validateUsername(value) {
   return name;
 }
 
+// Map the client's sample rows into the listener contract without changing the source JSON.
+export function normalizeSampleStudy(rows) {
+  if (!Array.isArray(rows) || !rows.length) throw new AppError("invalidStudy");
+  const media = new Map();
+  const questions = rows.map((row, order) => {
+    const audio =
+      typeof row?.audio_path === "string"
+        ? row.audio_path.match(/^sample\/audio\/([a-zA-Z0-9_-]+)\.wav$/)
+        : null;
+    if (
+      !audio ||
+      typeof row.sentence !== "string" ||
+      !row.sentence.trim() ||
+      typeof row.question !== "string" ||
+      !row.question.trim() ||
+      !Array.isArray(row.options) ||
+      row.options.some((option) => typeof option?.content !== "string")
+    )
+      throw new AppError("invalidStudy");
+    const audioAssetId = audio[1];
+    media.set(audioAssetId, {
+      id: audioAssetId,
+      path: "./" + row.audio_path,
+      mimeType: "audio/wav",
+    });
+    return {
+      id: audioAssetId + "-" + (order + 1),
+      order,
+      presentationMode: "both",
+      language: "en",
+      prompt: row.question,
+      stimulus: {
+        text: row.sentence,
+        language: "zh-Hans",
+        audioAssetId,
+      },
+      // Keep the source option IDs; the answer key is not part of the participant UI.
+      options: row.options.map((option) => ({
+        id: option.id,
+        text: option.content,
+      })),
+    };
+  });
+  const study = {
+    schemaVersion: 1,
+    id: "sample",
+    revision: 1,
+    title: "Chinese sentence interpretation",
+    stimulusLanguage: "zh-Hans",
+    questions,
+    media: [...media.values()],
+  };
+  validateStudy(study);
+  return study;
+}
+
 // Research fixtures remain data; no automatic translation or experimental logic.
 export function validateStudy(study) {
   if (

@@ -3,11 +3,55 @@ import assert from "node:assert/strict";
 import {
   parseSentences,
   validateStudy,
+  normalizeSampleStudy,
   progressFor,
 } from "../assets/js/data.js";
 import { Recorder } from "../assets/js/recorder.js";
 
 const bytes = (text) => new TextEncoder().encode(text);
+
+test("client sample keeps question order, bilingual stimuli and matching audio files", async () => {
+  const { readFile, access } = await import("node:fs/promises");
+  const rows = JSON.parse(
+    await readFile(new URL("../sample/sample.json", import.meta.url), "utf8"),
+  );
+  const study = normalizeSampleStudy(rows);
+  assert.equal(study.questions.length, rows.length);
+  assert.equal(
+    new Set(study.questions.map((question) => question.id)).size,
+    rows.length,
+  );
+  assert.deepEqual(normalizeSampleStudy(rows), study);
+  for (const [index, question] of study.questions.entries()) {
+    assert.equal(question.order, index);
+    assert.equal(question.stimulus.text, rows[index].sentence);
+    assert.equal(question.prompt, rows[index].question);
+    assert.equal(question.presentationMode, "both");
+    assert.equal(question.language, "en");
+    assert.equal(question.stimulus.language, "zh-Hans");
+    assert.deepEqual(
+      question.options,
+      rows[index].options.map((option) => ({
+        id: option.id,
+        text: option.content,
+      })),
+    );
+    assert.equal("correct" in question, false);
+    const media = study.media.find(
+      (asset) => asset.id === question.stimulus.audioAssetId,
+    );
+    assert.equal(media.path, "./" + rows[index].audio_path);
+    await access(new URL("../" + rows[index].audio_path, import.meta.url));
+  }
+  assert.throws(() => normalizeSampleStudy([]), { code: "invalidStudy" });
+  assert.throws(
+    () =>
+      normalizeSampleStudy([
+        { ...rows[0], audio_path: "sample/audio/../other.wav" },
+      ]),
+    { code: "invalidStudy" },
+  );
+});
 
 test("UTF-8 import preserves order and duplicate sentences with distinct IDs", () => {
   const result = parseSentences(

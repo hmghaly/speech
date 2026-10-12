@@ -47,8 +47,8 @@
       "en": "New Project"
     },
     "ui-index-nav-listener": {
-      "zh-Hans": "听辨演示",
-      "en": "Listening Demo"
+      "zh-Hans": "听辨任务",
+      "en": "Listening Study"
     },
     "ui-index-projects-heroHeadline": {
       "zh-Hans": "让语言研究\n被听见。",
@@ -63,8 +63,8 @@
       "en": "Create Project"
     },
     "ui-index-nav-listener-2": {
-      "zh-Hans": "听辨演示",
-      "en": "Listening Demo"
+      "zh-Hans": "听辨任务",
+      "en": "Listening Study"
     },
     "ui-index-projects-list": {
       "zh-Hans": "已保存的项目",
@@ -119,8 +119,8 @@
       "en": "New Project"
     },
     "ui-project-nav-listener": {
-      "zh-Hans": "听辨演示",
-      "en": "Listening Demo"
+      "zh-Hans": "听辨任务",
+      "en": "Listening Study"
     },
     "ui-project-create-guideTitle": {
       "zh-Hans": "准备一个朗读项目",

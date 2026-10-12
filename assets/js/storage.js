@@ -5,6 +5,7 @@ import {
   timestamp,
   validateProject,
   validateStudy,
+  normalizeSampleStudy,
   validateUsername,
   progressFor,
 } from "./data.js";
@@ -277,10 +278,13 @@ export function createLocalStore() {
       if (!isId(id)) throw new AppError("invalidStudy");
       try {
         const response = await fetch(
-          "./studies/" + encodeURIComponent(id) + ".json",
+          id === "sample"
+            ? "./sample/sample.json"
+            : "./studies/" + encodeURIComponent(id) + ".json",
         );
         if (!response.ok) throw new Error();
-        const study = await response.json();
+        const data = await response.json();
+        const study = id === "sample" ? normalizeSampleStudy(data) : data;
         validateStudy(study);
         if (study.id !== id) throw new AppError("invalidStudy");
         return study;
@@ -308,7 +312,11 @@ export function createLocalStore() {
       }
       const study = await this.getStudy(studyId);
       const asset = study.media.find((item) => item.id === assetId);
-      if (!asset?.path?.startsWith("./assets/audio/"))
+      if (
+        !["./assets/audio/", "./sample/audio/"].some((prefix) =>
+          asset?.path?.startsWith(prefix),
+        )
+      )
         throw new AppError("audioFailed");
       return {
         src: new URL(asset.path, location.href).href,
