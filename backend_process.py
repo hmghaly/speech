@@ -24,3 +24,5 @@ user_name = form.getvalue("name", "Guest")
 # print("</html>")
 output_dict={"user_name":user_name,"status":"success"}
 print(json.dumps(output_dict))
+
+
