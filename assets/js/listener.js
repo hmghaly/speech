@@ -155,7 +155,8 @@ async function renderQuestion() {
   };
 
   console.log(question)
-  
+  //post_data_async(link,obj2upload)
+
   bind(get("answer-progress"), "listener.progress", counts);
   bind(get("listener-progress"), "listener.progress", counts, "aria-label");
   get("listener-progress").max = counts.total;
@@ -262,6 +263,11 @@ async function startSession(resume = false) {
 // After a failed write, retain the same answer and operation ID until a retry is confirmed.
 get("question-panel").addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  console.log("Hello")
+  //post_data_async(link,obj2upload)
+
+
   if (!["ready", "failed"].includes(state)) return;
   get("page-error").hidden = true;
   try {
