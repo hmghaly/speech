@@ -18,8 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="./assets/css/app.css" />
     <script type="module" src="./assets/js/listener.js"></script>
-      <script src="https://hmghaly.github.io/script.js"></script>
-      
+    <script src="https://hmghaly.github.io/script.js"></script>
   </head>
   <body data-page="listener">
     <a
@@ -107,6 +106,11 @@
               data-i18n-state="listener.title"
             ></h1>
             <p id="study-title" class="intro"></p>
+            <p
+              id="listener-participant"
+              class="listener-participant"
+              hidden
+            ></p>
           </div>
           <aside id="demo-notice" class="notice">
             <strong
@@ -154,6 +158,67 @@
               ></button>
             </div>
           </section>
+          <form
+            id="participant-form"
+            class="panel listener-registration"
+            hidden
+            novalidate
+            aria-labelledby="participant-heading"
+          >
+            <h2 id="participant-heading" data-i18n="participant-heading"></h2>
+            <p
+              id="participant-help"
+              class="helper"
+              data-i18n="participant-help"
+            ></p>
+            <div class="listener-name-fields">
+              <div class="field">
+                <label for="participant-name"
+                  ><span
+                    id="participant-name-label"
+                    data-i18n="participant-name-label"
+                  ></span
+                  ><span
+                    class="required"
+                    id="participant-required"
+                    data-i18n="participant-required"
+                  ></span
+                ></label>
+                <input
+                  id="participant-name"
+                  name="name"
+                  type="text"
+                  required
+                  autocomplete="name"
+                  autocapitalize="none"
+                  autocorrect="off"
+                  spellcheck="false"
+                  enterkeyhint="go"
+                  aria-describedby="participant-help participant-error"
+                  data-i18n-placeholder="participant-name"
+                />
+              </div>
+              <button
+                id="participant-proceed"
+                class="button"
+                type="submit"
+                data-i18n="participant-proceed"
+                data-i18n-state="listener.proceed"
+              ></button>
+            </div>
+            <p
+              id="participant-error"
+              class="error field-error"
+              role="alert"
+              hidden
+            ></p>
+            <button
+              id="participant-cancel"
+              class="button subtle"
+              type="button"
+              data-i18n="participant-cancel"
+            ></button>
+          </form>
           <form id="question-panel" class="panel" hidden novalidate>
             <div class="progress-heading numbers">
               <p id="question-position"></p>
