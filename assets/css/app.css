@@ -1242,6 +1242,36 @@
   .listener-page .task-heading {
     margin-bottom: 24px;
   }
+  .listener-participant {
+    margin-top: 12px;
+    color: var(--brown);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .listener-registration h2 {
+    font-size: 24px;
+  }
+  .listener-registration .helper {
+    max-width: 55ch;
+  }
+  .listener-name-fields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .listener-name-fields .field {
+    margin: 0;
+  }
+  .listener-name-fields .button {
+    min-height: 52px;
+  }
+  .listener-registration .button.subtle {
+    margin-top: 16px;
+    min-width: 44px;
+    padding-inline: 0;
+  }
   .listener-page #demo-notice {
     background: transparent;
     padding: 0;
@@ -1319,6 +1349,9 @@
   }
 }
 @media (max-width: 719px) {
+  .listener-name-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .listener-session {
     grid-template-columns: minmax(0, 1fr);
     gap: 24px;

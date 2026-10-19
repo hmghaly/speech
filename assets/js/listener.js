@@ -1,5 +1,6 @@
+/* global post_async */
 import { store } from "./storage.js";
-import { AppError, uid, timestamp } from "./data.js";
+import { AppError, uid, timestamp, validateUsername } from "./data.js";
 import {
   setup,
   bind,
@@ -10,18 +11,16 @@ import {
   time,
 } from "./ui.js";
 
-window.cur_question=null; //global variable
+window.cur_question = null; //global variable
 // window.myGlobal="123"
 // //var myGlobal = "Hello";
 // console.log(window.myGlobal); // "Hello" (In browsers)
 // console.log("Hello2")
 
-
-
 const get = (id) => document.getElementById(id);
 const studyId = new URLSearchParams(location.search).get("study") || "sample";
 
-const listenerId = new URLSearchParams(location.search).get("listener") || "listener";
+const listenerId = new URLSearchParams(location.search).get("listener") || "";
 //const listenerId = new URLSearchParams(location.search).get("listener") || "listener";
 
 let study;
@@ -34,6 +33,41 @@ let mediaHandle;
 let audio = get("question-audio");
 let generation = 0;
 let alive = true;
+
+// The saved session owns its identity, including when an older session has only an ID.
+function showParticipant(session) {
+  get("listener-participant").hidden = !session;
+  if (session)
+    bind(get("listener-participant"), "listener.participant", {
+      name: session.displayName || session.participantId,
+    });
+}
+
+// A name is requested only for a new session; Back returns to the saved-session choice.
+function showParticipantForm() {
+  if (state !== "start") return;
+  state = "naming";
+  get("listener-start").hidden = true;
+  get("participant-form").hidden = false;
+  get("participant-error").hidden = true;
+  get("page-error").hidden = true;
+  get("participant-name").value = listenerId;
+  get("participant-name").removeAttribute("aria-invalid");
+  showParticipant(null);
+  get("participant-name").focus();
+}
+
+// Prevent duplicate session creation while the name or saved session is being submitted.
+function entryBusy(busy) {
+  for (const id of [
+    "new-session",
+    "resume",
+    "participant-name",
+    "participant-proceed",
+    "participant-cancel",
+  ])
+    get(id).disabled = busy;
+}
 
 // Releasing a question also releases its media URL and silences stale playback callbacks.
 function clearAudio() {
@@ -51,8 +85,6 @@ function clearAudio() {
   mediaHandle?.release();
   mediaHandle = null;
 }
-
-
 
 // A generation token prevents old question audio from updating the current controls.
 async function loadAudio(question) {
@@ -143,6 +175,8 @@ async function complete() {
 
 // Render only the assigned stimulus mode, including its accessibility-tree representation.
 async function renderQuestion() {
+  showParticipant(progress.session);
+  get("participant-form").hidden = true;
   if (!progress.nextItemId) {
     await complete();
     return;
@@ -168,8 +202,8 @@ async function renderQuestion() {
     total: study.questions.length,
   };
 
-  window.cur_question=question
-  console.log(question)
+  window.cur_question = question;
+  console.log(question);
   //post_data_async(link,obj2upload)
 
   bind(get("answer-progress"), "listener.progress", counts);
@@ -224,6 +258,8 @@ async function renderQuestion() {
 
 // Explain the saved session before offering its primary action.
 function showSessionChoice() {
+  get("participant-form").hidden = true;
+  showParticipant(previous?.session);
   const completed = previous && !previous.nextItemId;
   const variant = !previous ? "start" : completed ? "completed" : "resume";
   bind(get("listener-session-heading"), "listener." + variant + "Title");
@@ -232,7 +268,7 @@ function showSessionChoice() {
     total: previous?.requiredItemIds.length || study.questions.length,
   });
   bind(get("resume"), completed ? "listener.view" : "listener.resume");
-  bind(get("new-session"), previous ? "listener.new" : "listener.start");
+  bind(get("new-session"), "listener.new");
   const resume = get("resume");
   const start = get("new-session");
   const continueSession = previous && !completed;
@@ -248,30 +284,51 @@ function showSessionChoice() {
 
 // A failed start retries its original identity; resuming reloads confirmed progress.
 async function startSession(resume = false) {
-  if (!["start", "loading"].includes(state)) return;
-  state = "starting";
-  get("new-session").disabled = get("resume").disabled = true;
+  if (state !== (resume ? "start" : "naming")) return;
+  get("page-error").hidden = true;
+  get("participant-error").hidden = true;
   try {
+    if (!resume) {
+      const name = validateUsername(get("participant-name").value);
+      if (!sessionInput || sessionInput.participantId !== name)
+        sessionInput = {
+          id: uid(),
+          participantId: name,
+          displayName: name,
+          role: "listener",
+          targetId: study.id,
+          createdAt: timestamp(),
+        };
+    }
+    state = "starting";
+    entryBusy(true);
+    bind(get("participant-proceed"), "listener.starting");
     if (resume) progress = await store.getSession(previous.session.id);
     else {
-      sessionInput ||= {
-        id: uid(),
-        participantId: uid(),
-        role: "listener",
-        targetId: study.id,
-        createdAt: timestamp(),
-      };
       progress = await store.startSession(sessionInput, {
         operationId: sessionInput.id,
       });
     }
     if (alive) await renderQuestion();
   } catch (failure) {
-    state = "start";
-    showSessionChoice();
-    showError(get("page-error"), failure);
+    state = resume ? "start" : "naming";
+    if (resume) {
+      showSessionChoice();
+      showError(get("page-error"), failure);
+    } else {
+      get("participant-form").hidden = false;
+      showParticipant(null);
+      if (
+        ["usernameRequired", "usernameTooLong", "controlCharacters"].includes(
+          failure.code,
+        )
+      )
+        get("participant-name").setAttribute("aria-invalid", "true");
+      showError(get("participant-error"), failure);
+    }
   } finally {
-    get("new-session").disabled = get("resume").disabled = false;
+    entryBusy(false);
+    bind(get("participant-proceed"), "listener.proceed");
   }
 }
 
@@ -284,7 +341,6 @@ get("question-panel").addEventListener("submit", async (event) => {
   //window.qa_dict=JSON.parse(JSON.stringify(window.cur_question))
   //window.cur_question
   //post_data_async(link,obj2upload)
-
 
   if (!["ready", "failed"].includes(state)) return;
   get("page-error").hidden = true;
@@ -300,21 +356,25 @@ get("question-panel").addEventListener("submit", async (event) => {
       questionId: progress.nextItemId,
       optionId,
       participantId: progress.session.participantId,
+      name: progress.session.displayName || progress.session.participantId,
       sessionId: progress.session.id,
       createdAt: timestamp(),
     };
-    window.qa_dict=pending
-    window.qa_dict["question"]=JSON.parse(JSON.stringify(window.cur_question))
-
-    console.log(window.qa_dict)
-    const res=await post_async("backend_process.py",window.qa_dict)
-    console.log(res)
-
     state = "saving";
     get("submit-answer").disabled = true;
     get("answer-group").disabled = true;
     bind(get("submit-answer"), "listener.saving");
     status(get("answer-status"), "listener.saving");
+
+    window.qa_dict = pending;
+    window.qa_dict["question"] = JSON.parse(
+      JSON.stringify(window.cur_question),
+    );
+
+    console.log(window.qa_dict);
+    const res = await post_async("backend_process.py", window.qa_dict);
+    console.log(res);
+
     const receipt = await store.saveAnswer(pending, {
       operationId: pending.id,
     });
@@ -351,7 +411,21 @@ get("play-audio").addEventListener("click", async () => {
 get("retry-audio").addEventListener("click", () =>
   loadAudio(study.questions.find((item) => item.id === progress.nextItemId)),
 );
-get("new-session").addEventListener("click", () => startSession());
+get("new-session").addEventListener("click", showParticipantForm);
+get("participant-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  void startSession();
+});
+get("participant-name").addEventListener("input", () => {
+  get("participant-name").removeAttribute("aria-invalid");
+  get("participant-error").hidden = true;
+});
+get("participant-cancel").addEventListener("click", () => {
+  if (state !== "naming") return;
+  state = "start";
+  showSessionChoice();
+  get(previous ? "resume" : "new-session").focus();
+});
 get("resume").addEventListener("click", () => startSession(true));
 get("retry-page").addEventListener("click", async () => {
   get("retry-page").hidden = true;
@@ -369,10 +443,8 @@ async function loadStudy() {
     get("study-title").dataset.content = "study.title";
     previous = await store.findSession(study.id, "listener");
     state = "start";
-    if (previous) {
-      showSessionChoice();
-      get("page-status").textContent = "";
-    } else await startSession();
+    showSessionChoice();
+    get("page-status").textContent = "";
   } catch (failure) {
     showError(get("page-error"), failure);
     get("page-status").textContent = "";

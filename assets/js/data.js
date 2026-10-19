@@ -138,7 +138,7 @@ export function validateProject(project) {
 }
 
 export function validateUsername(value) {
-  const name = value.trim();
+  const name = typeof value === "string" ? value.trim() : "";
   if (!name) throw new AppError("usernameRequired");
   if (length(name) > 40) throw new AppError("usernameTooLong");
   if (controls.test(name)) throw new AppError("controlCharacters");

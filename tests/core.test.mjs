@@ -4,11 +4,28 @@ import {
   parseSentences,
   validateStudy,
   normalizeSampleStudy,
+  validateUsername,
   progressFor,
 } from "../assets/js/data.js";
 import { Recorder } from "../assets/js/recorder.js";
 
 const bytes = (text) => new TextEncoder().encode(text);
+
+test("participant names accept names and IDs while rejecting blank, long or control-character input", () => {
+  assert.equal(
+    validateUsername("  张三 Researcher 42  "),
+    "张三 Researcher 42",
+  );
+  assert.equal(validateUsername("participant-007"), "participant-007");
+  assert.throws(() => validateUsername("  "), { code: "usernameRequired" });
+  assert.throws(() => validateUsername(null), { code: "usernameRequired" });
+  assert.throws(() => validateUsername("名".repeat(41)), {
+    code: "usernameTooLong",
+  });
+  assert.throws(() => validateUsername("person\u0000"), {
+    code: "controlCharacters",
+  });
+});
 
 test("client sample keeps question order, bilingual stimuli and matching audio files", async () => {
   const { readFile, access } = await import("node:fs/promises");
