@@ -25,7 +25,7 @@ user_name = data.get("name", "Guest")
 output_dict = {
     "user_name": user_name,
     "status": "success",
-    "stdin": body
+    "stdin": data
 }
 
 # Output HTTP headers, followed by the JSON response
