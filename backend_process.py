@@ -31,7 +31,17 @@ output_dict = {
 # Output HTTP headers, followed by the JSON response
 print("Content-Type: application/json; charset=utf-8")
 print()
-print(json.dumps(output_dict))
+output=json.dumps(output_dict)
+print(output)
+
+data_dir="../../user_data"
+project_dir=os.path.join(data_dir,"speech_project")
+if not os.path.exists(project_dir): os.makedirs(project_dir)
+out_fpath=os.path.join(project_dir,"responses.txt")
+fopen=open(out_fpath,"a")
+fopen.write(output+"\n")
+fopen.close()
+
 
 
 
