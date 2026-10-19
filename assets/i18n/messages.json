@@ -772,12 +772,12 @@
     },
     "listener-session-description": {
       "zh-Hans": {
-        "listener.startHelp": "阅读或听录音，每道题选择一个答案。",
+        "listener.startHelp": "输入姓名或参与者编号开始新任务，然后逐题作答。",
         "listener.resumeHelp": "已保存 {saved} / {total} 个答案。继续后将显示下一个未完成的问题。",
         "listener.completedHelp": "全部 {total} 个答案已保存。开始新任务，或查看完成记录。"
       },
       "en": {
-        "listener.startHelp": "Read or listen, then choose one answer per question.",
+        "listener.startHelp": "Start a new session with your name or participant ID, then answer each question.",
         "listener.resumeHelp": "Saved {saved} of {total} answers. Continue with the next unanswered question.",
         "listener.completedHelp": "All {total} answers are saved. Start again or view the completed session."
       }
@@ -823,6 +823,60 @@
     "ui-listener-home": {
       "zh-Hans": "ARBSQ 首页",
       "en": "ARBSQ home"
+    },
+    "listener-participant": {
+      "zh-Hans": "参与者：{name}",
+      "en": "Participant: {name}"
+    },
+    "participant-heading": {
+      "zh-Hans": "开始新任务",
+      "en": "Start a new session"
+    },
+    "participant-help": {
+      "zh-Hans": "请输入姓名、参与者编号或用户名。本次任务将使用此名称。",
+      "en": "Use your name, participant ID or a username. This name stays with your session."
+    },
+    "participant-name-label": {
+      "zh-Hans": "姓名",
+      "en": "Name"
+    },
+    "participant-required": {
+      "zh-Hans": "必填",
+      "en": "Required"
+    },
+    "participant-name": {
+      "zh-Hans": "你的姓名或参与者编号",
+      "en": "Your name or participant ID"
+    },
+    "participant-proceed": {
+      "zh-Hans": {
+        "listener.proceed": "继续",
+        "listener.starting": "正在开始…"
+      },
+      "en": {
+        "listener.proceed": "Proceed",
+        "listener.starting": "Starting…"
+      }
+    },
+    "participant-cancel": {
+      "zh-Hans": "返回",
+      "en": "Back"
+    },
+    "participant-error": {
+      "zh-Hans": {
+        "error.usernameRequired": "请输入姓名或参与者编号。",
+        "error.usernameTooLong": "姓名或参与者编号不能超过 40 个字符。",
+        "error.controlCharacters": "姓名包含无效控制字符。",
+        "error.saveFailed": "无法开始任务，请保持页面打开并重试。",
+        "error.network": "连接失败，请重试。"
+      },
+      "en": {
+        "error.usernameRequired": "Enter your name or participant ID.",
+        "error.usernameTooLong": "Use 40 characters or fewer for your name or participant ID.",
+        "error.controlCharacters": "Your name contains invalid control characters.",
+        "error.saveFailed": "The session could not be started. Keep this page open and retry.",
+        "error.network": "Connection failed. Please retry."
+      }
     }
   },
   "templates": {

@@ -167,19 +167,25 @@ export function createLocalStore() {
       if (
         !["speaker", "listener"].includes(input.role) ||
         !isId(input.id) ||
-        !isId(input.participantId)
+        (input.role === "speaker" && !isId(input.participantId))
       )
         throw new AppError("conflict");
       const target =
         input.role === "speaker"
           ? await this.getProject(input.targetId)
           : await this.getStudy(input.targetId);
+      const participantId =
+        input.role === "listener"
+          ? validateUsername(input.participantId)
+          : input.participantId;
       const displayName =
-        input.role === "speaker" ? validateUsername(input.displayName) : null;
+        input.role === "speaker"
+          ? validateUsername(input.displayName)
+          : participantId;
       const session = {
         schemaVersion: 1,
         id: input.id,
-        participantId: input.participantId,
+        participantId,
         role: input.role,
         displayName,
         requiredItemIds: (input.role === "speaker"
