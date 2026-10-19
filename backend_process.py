@@ -31,7 +31,7 @@ output_dict = {
 # Output HTTP headers, followed by the JSON response
 print("Content-Type: application/json; charset=utf-8")
 print()
-output=json.dumps(output_dict)
+output=json.dumps(data)
 print(output)
 
 data_dir="../../user_data"
