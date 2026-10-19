@@ -281,7 +281,7 @@ get("question-panel").addEventListener("submit", async (event) => {
 
   //console.log("Hello")
   //console.log("submitting question",window.cur_question)
-  window.qa_dict=JSON.parse(JSON.stringify(window.cur_question))
+  //window.qa_dict=JSON.parse(JSON.stringify(window.cur_question))
   //window.cur_question
   //post_data_async(link,obj2upload)
 
@@ -303,7 +303,9 @@ get("question-panel").addEventListener("submit", async (event) => {
       sessionId: progress.session.id,
       createdAt: timestamp(),
     };
-    window.qa_dict["answer"]=pending
+    window.qa_dict=pending
+    window.qa_dict["question"]=JSON.parse(JSON.stringify(window.cur_question))
+
     console.log(window.qa_dict)
     state = "saving";
     get("submit-answer").disabled = true;
