@@ -23,6 +23,10 @@ user_name = form.getvalue("name", "Guest")
 # print("</body>")
 # print("</html>")
 output_dict={"user_name":user_name,"status":"success"}
+
+stdin_str=sys.stdin.read()
+output_dict["stdin"]=str(stdin_str)
+
 print(json.dumps(output_dict))
 
 
