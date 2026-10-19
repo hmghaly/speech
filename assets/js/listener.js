@@ -122,6 +122,7 @@ async function complete() {
   get("question-panel").hidden = true;
   get("listener-start").hidden = true;
   status(get("page-status"), "completion.checking");
+  get("completion-detail").innerHTML="Completion Code: "
   try {
     progress = await store.completeSession(progress.session.id);
     if (!alive) return;
