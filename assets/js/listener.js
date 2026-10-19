@@ -11,7 +11,8 @@ import {
 } from "./ui.js";
 
 var cur_question=null; //global variable
-var myGlobal = "Hello";
+window.myGlobal="123"
+//var myGlobal = "Hello";
 console.log(window.myGlobal); // "Hello" (In browsers)
 console.log("Hello2")
 
