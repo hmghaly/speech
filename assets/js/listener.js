@@ -280,7 +280,8 @@ get("question-panel").addEventListener("submit", async (event) => {
   event.preventDefault();
 
   //console.log("Hello")
-  console.log("submitting question",window.cur_question)
+  //console.log("submitting question",window.cur_question)
+  qa_dict=JSON.parse(JSON.stringify(window.cur_question))
   //window.cur_question
   //post_data_async(link,obj2upload)
 
@@ -302,6 +303,8 @@ get("question-panel").addEventListener("submit", async (event) => {
       sessionId: progress.session.id,
       createdAt: timestamp(),
     };
+    qa_dict["answer"]=pending
+    console.log(qa_dict)
     state = "saving";
     get("submit-answer").disabled = true;
     get("answer-group").disabled = true;
