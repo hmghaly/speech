@@ -10,8 +10,14 @@ import {
   time,
 } from "./ui.js";
 
+var cur_question=null; //global variable
+
 const get = (id) => document.getElementById(id);
 const studyId = new URLSearchParams(location.search).get("study") || "sample";
+
+const listenerId = new URLSearchParams(location.search).get("listener") || "listener";
+//const listenerId = new URLSearchParams(location.search).get("listener") || "listener";
+
 let study;
 let progress;
 let previous;
