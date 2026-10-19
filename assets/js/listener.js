@@ -11,6 +11,11 @@ import {
 } from "./ui.js";
 
 var cur_question=null; //global variable
+var myGlobal = "Hello";
+console.log(window.myGlobal); // "Hello" (In browsers)
+console.log("Hello2")
+
+
 
 const get = (id) => document.getElementById(id);
 const studyId = new URLSearchParams(location.search).get("study") || "sample";
@@ -46,7 +51,7 @@ function clearAudio() {
   mediaHandle = null;
 }
 
-console.log("Hello")
+
 
 // A generation token prevents old question audio from updating the current controls.
 async function loadAudio(question) {
