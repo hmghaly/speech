@@ -40,6 +40,8 @@ function clearAudio() {
   mediaHandle = null;
 }
 
+console.log("Hello")
+
 // A generation token prevents old question audio from updating the current controls.
 async function loadAudio(question) {
   clearAudio();
