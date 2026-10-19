@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import cgi, json
+import cgi, json, sys
 import cgitb
 
 # Enable detailed error messages in the browser for debugging
