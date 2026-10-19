@@ -307,6 +307,9 @@ get("question-panel").addEventListener("submit", async (event) => {
     window.qa_dict["question"]=JSON.parse(JSON.stringify(window.cur_question))
 
     console.log(window.qa_dict)
+    const res=await post_async("backend_process.py",window.qa_dict)
+    console.log(res)
+
     state = "saving";
     get("submit-answer").disabled = true;
     get("answer-group").disabled = true;
