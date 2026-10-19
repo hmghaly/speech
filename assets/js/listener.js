@@ -10,11 +10,11 @@ import {
   time,
 } from "./ui.js";
 
-var cur_question=null; //global variable
-window.myGlobal="123"
-//var myGlobal = "Hello";
-console.log(window.myGlobal); // "Hello" (In browsers)
-console.log("Hello2")
+window.cur_question=null; //global variable
+// window.myGlobal="123"
+// //var myGlobal = "Hello";
+// console.log(window.myGlobal); // "Hello" (In browsers)
+// console.log("Hello2")
 
 
 
@@ -168,6 +168,7 @@ async function renderQuestion() {
     total: study.questions.length,
   };
 
+  window.cur_question=question
   console.log(question)
   //post_data_async(link,obj2upload)
 
@@ -278,7 +279,9 @@ async function startSession(resume = false) {
 get("question-panel").addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  console.log("Hello")
+  //console.log("Hello")
+  console.log("submitting question",window.cur_question)
+  //window.cur_question
   //post_data_async(link,obj2upload)
 
 
