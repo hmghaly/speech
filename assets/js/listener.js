@@ -153,6 +153,9 @@ async function renderQuestion() {
     saved: progress.savedItemIds.length,
     total: study.questions.length,
   };
+
+  console.log(question)
+  
   bind(get("answer-progress"), "listener.progress", counts);
   bind(get("listener-progress"), "listener.progress", counts, "aria-label");
   get("listener-progress").max = counts.total;
