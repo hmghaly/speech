@@ -20,7 +20,7 @@ window.cur_question = null; //global variable
 const get = (id) => document.getElementById(id);
 const studyId = new URLSearchParams(location.search).get("study") || "sample";
 
-const listenerId = new URLSearchParams(location.search).get("listener") || "";
+window.listenerId = new URLSearchParams(location.search).get("listener") || "";
 //const listenerId = new URLSearchParams(location.search).get("listener") || "listener";
 
 let study;
@@ -154,7 +154,11 @@ async function complete() {
   get("question-panel").hidden = true;
   get("listener-start").hidden = true;
   status(get("page-status"), "completion.checking");
-  get("completion-detail").innerHTML="Completion Code: "
+  
+  const randomNumber = Math.floor(Math.random() * 900) + 100;
+  const completion_code=window.listenerId+"-"+randomNumber
+  get("completion-detail").innerHTML="Completion Code: "+completion_code
+
   try {
     progress = await store.completeSession(progress.session.id);
     if (!alive) return;
@@ -291,6 +295,7 @@ async function startSession(resume = false) {
   try {
     if (!resume) {
       const name = validateUsername(get("participant-name").value);
+      window.listenerId=name
       if (!sessionInput || sessionInput.participantId !== name)
         sessionInput = {
           id: uid(),
