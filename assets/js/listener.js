@@ -34,7 +34,7 @@ let audio = get("question-audio");
 let generation = 0;
 let alive = true;
 
-console.log(study)
+//console.log(study)
 
 // The saved session owns its identity, including when an older session has only an ID.
 function showParticipant(session) {
@@ -451,6 +451,8 @@ get("retry-page").addEventListener("click", async () => {
 async function loadStudy() {
   try {
     study = await store.getStudy(studyId);
+    console.log(study)
+    
     get("demo-notice").hidden = study.id !== "demo";
     get("study-title").textContent = study.title;
     get("study-title").dataset.content = "study.title";
