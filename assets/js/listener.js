@@ -155,6 +155,7 @@ async function complete() {
   get("listener-start").hidden = true;
   status(get("page-status"), "completion.checking");
   
+  //create a completion code
   const randomNumber = Math.floor(Math.random() * 900) + 100;
   const completion_code=window.listenerId+"-"+randomNumber
   get("completion-detail").innerHTML="Completion Code: "+completion_code
