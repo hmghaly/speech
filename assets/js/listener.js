@@ -207,10 +207,13 @@ async function renderQuestion() {
     total: study.questions.length,
   };
 
+  //post_data_async(link,obj2upload)
+  const question_presentation_modes=["audio_only","text_only","both"] //randomize question presentation
+  question.presentationMode=get_1st_random(question_presentation_modes)
   window.cur_question = question;
   console.log(question);
-  //post_data_async(link,obj2upload)
-  const question_presentation_modes=["audio_only","text_only","both"]
+
+
 
   bind(get("answer-progress"), "listener.progress", counts);
   bind(get("listener-progress"), "listener.progress", counts, "aria-label");
