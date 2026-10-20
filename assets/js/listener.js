@@ -34,6 +34,8 @@ let audio = get("question-audio");
 let generation = 0;
 let alive = true;
 
+console.log(study)
+
 // The saved session owns its identity, including when an older session has only an ID.
 function showParticipant(session) {
   get("listener-participant").hidden = !session;
