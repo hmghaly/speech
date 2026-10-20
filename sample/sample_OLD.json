@@ -1,0 +1,68 @@
+[
+  {
+    "sentence": "\u65e0\u7ebf\u7535\u6cd5\u56fd\u522b\u7814\u7a76\u3002",
+    "audio_path": "sample/audio/s0_seg_id_002.wav",
+    "question": "what is the meaning?",
+    "options": [
+      { "id": "A", "content": "Radio / French studies." },
+      { "id": "B", "content": "Radio law / country studies." }
+    ],
+    "correct": "A"
+  },
+  {
+    "sentence": "\u65e0\u7ebf\u7535\u6cd5\u56fd\u522b\u7814\u7a76\u3002",
+    "audio_path": "sample/audio/s0_seg_id_003.wav",
+    "question": "what is the meaning?",
+    "options": [
+      { "id": "A", "content": "Radio / French studies." },
+      { "id": "B", "content": "Radio law / country studies." }
+    ],
+    "correct": "B"
+  },
+  {
+    "sentence": "\u4eba\u8001\u5b9e\u8bdd\u4e0d\u591a\u3002",
+    "audio_path": "sample/audio/s0_seg_id_008.wav",
+    "question": "what is the meaning?",
+    "options": [
+      {
+        "id": "A",
+        "content": "He\u2019s an honest person who doesn\u2019t talk much."
+      },
+      { "id": "B", "content": "As people get older, they tell fewer truths." }
+    ],
+    "correct": "A"
+  },
+  {
+    "sentence": "\u4eba\u8001\u5b9e\u8bdd\u4e0d\u591a\u3002",
+    "audio_path": "sample/audio/s0_seg_id_009.wav",
+    "question": "what is the meaning?",
+    "options": [
+      {
+        "id": "A",
+        "content": "He\u2019s an honest person who doesn\u2019t talk much."
+      },
+      { "id": "B", "content": "As people get older, they tell fewer truths." }
+    ],
+    "correct": "B"
+  },
+  {
+    "sentence": "\u6211\u7684\u5934\u50cf\u725b\u4e48\uff1f",
+    "audio_path": "sample/audio/s0_seg_id_020.wav",
+    "question": "what is the meaning?",
+    "options": [
+      { "id": "A", "content": "Is my profile picture awesome?" },
+      { "id": "B", "content": "Does my head look like a cow\u2019s?" }
+    ],
+    "correct": "A"
+  },
+  {
+    "sentence": "\u6211\u7684\u5934\u50cf\u725b\u4e48\uff1f",
+    "audio_path": "sample/audio/s0_seg_id_021.wav",
+    "question": "what is the meaning?",
+    "options": [
+      { "id": "A", "content": "Is my profile picture awesome?" },
+      { "id": "B", "content": "Does my head look like a cow\u2019s?" }
+    ],
+    "correct": "B"
+  }
+]
