@@ -291,6 +291,8 @@ export function createLocalStore() {
         if (!response.ok) throw new Error();
         const data = await response.json();
         const study = id === "sample" ? normalizeSampleStudy(data) : data;
+
+        console.log(study)
         validateStudy(study);
         if (study.id !== id) throw new AppError("invalidStudy");
         return study;
