@@ -17,10 +17,13 @@ from pathlib import Path
 cur_path="/var/www/arbsq/user_data/speech_project/responses.txt"
 DATA_FILE = Path(cur_path)
 
+#presentationMode
 # Keys to extract. Use dots for nested JSON keys.
 COLUMNS = [
     ("name", "name"),
     ("optionId", "optionId"),
+    ("correct", "correct"),
+    ("presentationMode", "presentationMode"),
     ("question.audio_path", "audio_path"),
     ("question.original_sentence", "original_sentence"),
     ("consented", "consented"),
