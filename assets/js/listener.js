@@ -450,15 +450,15 @@ get("question-panel").addEventListener("submit", async (event) => {
     get("answer-group").disabled = true;
     bind(get("submit-answer"), "listener.saving");
     status(get("answer-status"), "listener.saving");
-    const score=0;
-    if (pending["optionId"]==window.cur_question["correct"]) {
-      score=1
-      console.log(window.cur_question["correct"])
-    } 
+    // const score=0;
+    // if (pending["optionId"]==window.cur_question["correct"]) {
+    //   score=1
+    //   console.log(window.cur_question["correct"])
+    // } 
     
 
     window.qa_dict = pending;
-    window.qa_dict["score"]=score
+    //window.qa_dict["score"]=score
     window.qa_dict["question"] = JSON.parse(
       JSON.stringify(window.cur_question),
     );
