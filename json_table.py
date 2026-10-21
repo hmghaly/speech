@@ -22,10 +22,10 @@ DATA_FILE = Path(cur_path)
 COLUMNS = [
     ("name", "name"),
     ("optionId", "optionId"),
-    ("presentationMode", "presentationMode"),
+    ("question.correct", "correct"),
+    ("question.presentationMode", "presentationMode"),
     ("question.audio_path", "audio_path"),
     ("question.original_sentence", "original_sentence"),
-    ("question.correct", "correct"),
     ("consented", "consented"),
 ]
 
