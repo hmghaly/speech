@@ -451,8 +451,8 @@ get("retry-page").addEventListener("click", async () => {
 async function loadStudy() {
   try {
     study = await store.getStudy(studyId);
-    study.questions=shuffle(study.questions)
-    
+    //study.questions=shuffle(study.questions)
+
     console.log(study)
 
     get("demo-notice").hidden = study.id !== "demo";

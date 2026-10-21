@@ -147,6 +147,8 @@ export function validateUsername(value) {
 
 // Map the client's sample rows into the listener contract without changing the source JSON.
 export function normalizeSampleStudy(rows) {
+  rows=shuffle(rows)
+  
   if (!Array.isArray(rows) || !rows.length) throw new AppError("invalidStudy");
   const media = new Map();
   const questions = rows.map((row, order) => {
