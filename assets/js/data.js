@@ -160,7 +160,7 @@ export function normalizeSampleStudy(rows) {
   if (!Array.isArray(rows) || !rows.length) throw new AppError("invalidStudy");
   const media = new Map();
   const questions = rows.map((row, order) => {
-    console.log(row)
+    //console.log(row)
     const audio =
       typeof row?.audio_path === "string"
         ? row.audio_path.match(/^sample\/audio\/([a-zA-Z0-9_-]+)\.wav$/)
@@ -188,6 +188,7 @@ export function normalizeSampleStudy(rows) {
       audio_path: row.audio_path,
       alt_audio_paths: row.alt_audio_paths || [],
       original_sentence: row.original_sentence,
+      correct: row.correct,
       order,
       presentationMode: "both",
       language: "en",
