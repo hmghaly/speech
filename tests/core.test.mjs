@@ -6,10 +6,23 @@ import {
   normalizeSampleStudy,
   validateUsername,
   progressFor,
+  consentRecord,
 } from "../assets/js/data.js";
 import { Recorder } from "../assets/js/recorder.js";
 
 const bytes = (text) => new TextEncoder().encode(text);
+
+test("consent records preserve both decisions and reject an unanswered choice", () => {
+  const recordedAt = "2026-10-21T10:00:00.000Z";
+  for (const consented of [true, false])
+    assert.deepEqual(consentRecord(consented, recordedAt), {
+      consented,
+      consentVersion: "2026-10-21",
+      consentRecordedAt: recordedAt,
+    });
+  for (const missing of [undefined, null, "false", "agree", 0])
+    assert.throws(() => consentRecord(missing), { code: "consentRequired" });
+});
 
 test("participant names accept names and IDs while rejecting blank, long or control-character input", () => {
   assert.equal(

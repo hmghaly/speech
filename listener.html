@@ -165,13 +165,18 @@
             novalidate
             aria-labelledby="participant-heading"
           >
-            <h2 id="participant-heading" data-i18n="participant-heading"></h2>
+            <h2
+              id="participant-heading"
+              data-i18n="participant-heading"
+              data-i18n-state="listener.newTitle"
+            ></h2>
             <p
               id="participant-help"
+              data-i18n-state="listener.nameHelp"
               class="helper"
               data-i18n="participant-help"
             ></p>
-            <div class="listener-name-fields">
+            <div id="participant-name-fields" class="listener-name-fields">
               <div class="field">
                 <label for="participant-name"
                   ><span
@@ -194,10 +199,139 @@
                   autocorrect="off"
                   spellcheck="false"
                   enterkeyhint="go"
-                  aria-describedby="participant-help participant-error"
+                  aria-describedby="participant-help participant-name-error"
                   data-i18n-placeholder="participant-name"
                 />
+                <p
+                  id="participant-name-error"
+                  class="error field-error"
+                  role="alert"
+                  hidden
+                ></p>
               </div>
+            </div>
+            <p
+              id="consent-scroll-help"
+              class="helper consent-scroll-help"
+              data-i18n="consent-scroll-help"
+            ></p>
+            <section
+              id="consent-document"
+              class="consent-document"
+              aria-labelledby="consent-heading"
+              aria-describedby="consent-scroll-help"
+              tabindex="0"
+            >
+              <h3 id="consent-heading" data-i18n="consent-heading"></h3>
+              <p id="consent-greeting" data-i18n="consent-greeting"></p>
+              <p id="consent-purpose" data-i18n="consent-purpose"></p>
+              <p id="consent-tasks" data-i18n="consent-tasks"></p>
+              <p id="consent-duration" data-i18n="consent-duration"></p>
+              <ul>
+                <li
+                  id="consent-guideline-1"
+                  data-i18n="consent-guideline-1"
+                ></li>
+                <li
+                  id="consent-guideline-2"
+                  data-i18n="consent-guideline-2"
+                ></li>
+                <li
+                  id="consent-guideline-3"
+                  data-i18n="consent-guideline-3"
+                ></li>
+                <li
+                  id="consent-guideline-4"
+                  data-i18n="consent-guideline-4"
+                ></li>
+                <li
+                  id="consent-guideline-5"
+                  data-i18n="consent-guideline-5"
+                ></li>
+              </ul>
+              <p
+                id="consent-interpretation"
+                data-i18n="consent-interpretation"
+              ></p>
+              <p id="consent-privacy" data-i18n="consent-privacy"></p>
+              <p id="consent-voluntary" data-i18n="consent-voluntary"></p>
+              <p
+                id="consent-contact-intro"
+                data-i18n="consent-contact-intro"
+              ></p>
+              <p id="consent-thanks" data-i18n="consent-thanks"></p>
+              <div class="consent-contact">
+                <p
+                  id="consent-researcher-ghaly"
+                  data-i18n="consent-researcher-ghaly"
+                ></p>
+                <p
+                  id="consent-researcher-jia"
+                  data-i18n="consent-researcher-jia"
+                ></p>
+                <p>
+                  <span
+                    id="consent-email-label"
+                    data-i18n="consent-email-label"
+                  ></span>
+                  <a
+                    id="consent-email-jia"
+                    href="mailto:pingping.jia@nju.edu.cn"
+                    data-i18n="consent-email-jia"
+                  ></a>
+                  <a
+                    id="consent-email-ghaly"
+                    href="mailto:hmghaly@gmail.com"
+                    data-i18n="consent-email-ghaly"
+                  ></a>
+                </p>
+              </div>
+            </section>
+            <fieldset
+              id="consent-options"
+              class="consent-options"
+              aria-describedby="consent-choice-help participant-error"
+            >
+              <legend id="consent-legend" data-i18n="consent-legend"></legend>
+              <label class="option" for="consent-agree">
+                <input
+                  id="consent-agree"
+                  name="consent"
+                  type="radio"
+                  value="agree"
+                  required
+                />
+                <span
+                  id="consent-agree-label"
+                  data-i18n="consent-agree-label"
+                ></span>
+              </label>
+              <label class="option" for="consent-disagree">
+                <input
+                  id="consent-disagree"
+                  name="consent"
+                  type="radio"
+                  value="disagree"
+                  required
+                />
+                <span
+                  id="consent-disagree-label"
+                  data-i18n="consent-disagree-label"
+                ></span>
+              </label>
+            </fieldset>
+            <p
+              id="consent-choice-help"
+              class="helper"
+              data-i18n="consent-choice-help"
+            ></p>
+            <p
+              id="participant-error"
+              class="error field-error"
+              role="alert"
+              hidden
+            ></p>
+            <div class="consent-actions">
               <button
                 id="participant-proceed"
                 class="button"
@@ -205,19 +339,13 @@
                 data-i18n="participant-proceed"
                 data-i18n-state="listener.proceed"
               ></button>
+              <button
+                id="participant-cancel"
+                class="button subtle"
+                type="button"
+                data-i18n="participant-cancel"
+              ></button>
             </div>
-            <p
-              id="participant-error"
-              class="error field-error"
-              role="alert"
-              hidden
-            ></p>
-            <button
-              id="participant-cancel"
-              class="button subtle"
-              type="button"
-              data-i18n="participant-cancel"
-            ></button>
           </form>
           <form id="question-panel" class="panel" hidden novalidate>
             <div class="progress-heading numbers">

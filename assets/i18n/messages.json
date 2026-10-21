@@ -626,7 +626,8 @@
         "error.unsupported": "此浏览器不支持录音，请使用较新的 Chrome、Safari 或 Firefox。",
         "error.unsupportedMedia": "录音格式或大小不受支持，请重新录制，最长两分钟、最大 10 MB。",
         "error.usernameRequired": "请输入用户名。",
-        "error.usernameTooLong": "用户名不能超过 40 个字符。"
+        "error.usernameTooLong": "用户名不能超过 40 个字符。",
+        "error.consentRequired": "请选择同意或不同意后再继续。"
       },
       "en": {
         "error.audioFailed": "The recording could not be loaded. Retry.",
@@ -667,7 +668,8 @@
         "error.unsupported": "Recording is unsupported. Use a recent Chrome, Safari or Firefox browser.",
         "error.unsupportedMedia": "The recording format or size is unsupported. Record again: up to two minutes and 10 MB.",
         "error.usernameRequired": "Enter a username.",
-        "error.usernameTooLong": "The username must not exceed 40 characters."
+        "error.usernameTooLong": "The username must not exceed 40 characters.",
+        "error.consentRequired": "Choose agree or disagree before continuing."
       }
     },
     "form-error": {
@@ -829,12 +831,24 @@
       "en": "Participant: {name}"
     },
     "participant-heading": {
-      "zh-Hans": "开始新任务",
-      "en": "Start a new session"
+      "zh-Hans": {
+        "listener.newTitle": "开始新任务",
+        "listener.consentTitle": "继续前请阅读"
+      },
+      "en": {
+        "listener.newTitle": "Start a new session",
+        "listener.consentTitle": "Before you continue"
+      }
     },
     "participant-help": {
-      "zh-Hans": "请输入姓名、参与者编号或用户名。本次任务将使用此名称。",
-      "en": "Use your name, participant ID or a username. This name stays with your session."
+      "zh-Hans": {
+        "listener.nameHelp": "请输入姓名、参与者编号或用户名，然后阅读知情同意书。本次任务将使用此名称。",
+        "listener.consentHelp": "您的姓名和进度已保存。继续答题前，请阅读下方说明并选择是否同意。"
+      },
+      "en": {
+        "listener.nameHelp": "Enter your name, participant ID or username, then read the consent form below. This name stays with your session.",
+        "listener.consentHelp": "Your name and progress are saved. Read the information below and choose whether you consent before continuing."
+      }
     },
     "participant-name-label": {
       "zh-Hans": "姓名",
@@ -868,15 +882,131 @@
         "error.usernameTooLong": "姓名或参与者编号不能超过 40 个字符。",
         "error.controlCharacters": "姓名包含无效控制字符。",
         "error.saveFailed": "无法开始任务，请保持页面打开并重试。",
-        "error.network": "连接失败，请重试。"
+        "error.network": "连接失败，请重试。",
+        "error.consentRequired": "请选择同意或不同意后再继续。"
       },
       "en": {
         "error.usernameRequired": "Enter your name or participant ID.",
         "error.usernameTooLong": "Use 40 characters or fewer for your name or participant ID.",
         "error.controlCharacters": "Your name contains invalid control characters.",
         "error.saveFailed": "The session could not be started. Keep this page open and retry.",
-        "error.network": "Connection failed. Please retry."
+        "error.network": "Connection failed. Please retry.",
+        "error.consentRequired": "Choose agree or disagree before continuing."
       }
+    },
+    "consent-heading": {
+      "zh-Hans": "被试知情同意书",
+      "en": "Consent Form"
+    },
+    "consent-greeting": {
+      "zh-Hans": "尊敬的先生/女士： 您好！",
+      "en": "Dear Participant,"
+    },
+    "consent-purpose": {
+      "zh-Hans": "首先，非常感谢您参与本次语言研究实验。本研究旨在了解人们对语言信息的理解与判断。",
+      "en": "Thank you very much for taking part in this language research study. This study aims to investigate how people understand and interpret linguistic information."
+    },
+    "consent-tasks": {
+      "zh-Hans": "在本实验中，您将完成一系列与句子理解有关的任务。实验过程中，您将听到或读到一些句子，随后根据您对句子的理解回答相应的选择题。请根据您听到或读到的内容以及自己的理解作答。",
+      "en": "In this experiment, you will complete a series of sentence comprehension tasks. During the experiment, you will listen to or read a number of sentences and then answer multiple-choice questions based on your understanding of each sentence. Please answer each question according to what you hear or read and your own interpretation of the sentence."
+    },
+    "consent-duration": {
+      "zh-Hans": "整个实验大约需要 30 分钟完成。在开始实验前，请注意以下事项：",
+      "en": "The experiment will take approximately 30 minutes to complete. Before starting the experiment, please note the following:"
+    },
+    "consent-interpretation": {
+      "zh-Hans": "本实验关注的是您对语言材料的自然理解和判断。部分题目可能存在不同的理解方式，请根据您在实验当下的理解作答，无需反复斟酌。",
+      "en": "This study focuses on your natural understanding and interpretation of linguistic materials. Some sentences may allow for more than one possible interpretation. Please answer according to your immediate understanding during the experiment; there is no need to spend excessive time reconsidering your response."
+    },
+    "consent-privacy": {
+      "zh-Hans": "您在实验中提供的所有数据将被严格保密，仅用于学术研究。研究结果可能以论文、会议报告或其他学术形式发表，但不会公开任何能够识别您个人身份的信息。",
+      "en": "All data collected in this study will be kept strictly confidential and used solely for academic research purposes. The results of the study may be presented in academic publications, conference presentations, or other scholarly contexts, but no information that could identify you personally will be disclosed."
+    },
+    "consent-voluntary": {
+      "zh-Hans": "参加本研究完全出于自愿。您有权选择不参加，也可以在实验过程中随时退出，而无需说明理由，且不会因此受到任何不利影响。",
+      "en": "Participation in this study is entirely voluntary. You may choose not to participate or withdraw from the experiment at any time without giving a reason and without any negative consequences."
+    },
+    "consent-contact-intro": {
+      "zh-Hans": "如果您希望进一步了解本研究，请通过以下方式与我们联系。",
+      "en": "If you would like further information about this study, please feel free to contact us."
+    },
+    "consent-thanks": {
+      "zh-Hans": "再次感谢您的参与！",
+      "en": "Thank you again for your participation!"
+    },
+    "consent-guideline-1": {
+      "zh-Hans": "请尽量在安静、无干扰的环境中完成实验；",
+      "en": "Please complete the experiment in a quiet environment with as few distractions as possible."
+    },
+    "consent-guideline-2": {
+      "zh-Hans": "如果实验中包含听觉材料，请确保您的设备可以正常播放声音，并将音量调节至舒适水平；",
+      "en": "If the experiment includes audio materials, please make sure that your device can play audio properly and adjust the volume to a comfortable level."
+    },
+    "consent-guideline-3": {
+      "zh-Hans": "请认真听取或阅读实验中呈现的句子；",
+      "en": "Please listen to or read each sentence carefully."
+    },
+    "consent-guideline-4": {
+      "zh-Hans": "请根据自己的理解独立完成每一道选择题，实验过程中请勿与他人讨论；",
+      "en": "Please answer each question independently based on your own understanding and do not discuss the questions with others during the experiment."
+    },
+    "consent-guideline-5": {
+      "zh-Hans": "请尽量一次性完成实验，避免中途长时间离开或受到其他事务干扰。",
+      "en": "Please try to complete the experiment in one sitting and avoid long interruptions."
+    },
+    "consent-researcher-ghaly": {
+      "zh-Hans": "Hussein Ghaly (Independent Researcher)",
+      "en": "Hussein Ghaly (Independent Researcher)"
+    },
+    "consent-researcher-jia": {
+      "zh-Hans": "贾娉娉（南京大学海外教育学院)",
+      "en": "Pingping JIA (Institute for International Students, Nanjing University)"
+    },
+    "consent-email-label": {
+      "zh-Hans": "邮箱：",
+      "en": "Email:"
+    },
+    "consent-email-jia": {
+      "zh-Hans": "pingping.jia@nju.edu.cn",
+      "en": "pingping.jia@nju.edu.cn"
+    },
+    "consent-email-ghaly": {
+      "zh-Hans": "hmghaly@gmail.com",
+      "en": "hmghaly@gmail.com"
+    },
+    "consent-legend": {
+      "zh-Hans": "请在下方勾选您是否愿意参加本研究：",
+      "en": "Please indicate below whether you agree to participate in this study:"
+    },
+    "consent-agree-label": {
+      "zh-Hans": "我已阅读并理解上述说明，并自愿同意参加本研究。",
+      "en": "I have read and understood the information above and voluntarily agree to participate in this study."
+    },
+    "consent-disagree-label": {
+      "zh-Hans": "我不同意参加本研究。",
+      "en": "I do not agree to participate in this study."
+    },
+    "consent-choice-help": {
+      "zh-Hans": "两种选择均可继续。若您不同意，您的答案将被标记为不可用于研究。",
+      "en": "You may continue with either choice. If you disagree, your answers will be marked for exclusion from research."
+    },
+    "participant-name-error": {
+      "en": {
+        "error.usernameRequired": "Enter your name or participant ID.",
+        "error.usernameTooLong": "Use 40 characters or fewer for your name or participant ID.",
+        "error.controlCharacters": "Your name contains invalid control characters.",
+        "error.saveFailed": "The session could not be started. Keep this page open and retry."
+      },
+      "zh-Hans": {
+        "error.usernameRequired": "请输入姓名或参与者编号。",
+        "error.usernameTooLong": "姓名或参与者编号不能超过 40 个字符。",
+        "error.controlCharacters": "姓名包含无效控制字符。",
+        "error.saveFailed": "无法开始任务，请保持页面打开并重试。"
+      }
+    },
+    "consent-scroll-help": {
+      "zh-Hans": "请在下方区域内滚动，阅读完整的知情同意书。",
+      "en": "Scroll within the panel to read the full consent form."
     }
   },
   "templates": {
