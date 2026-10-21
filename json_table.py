@@ -12,7 +12,10 @@ from pathlib import Path
 
 # Change this to the path of your JSONL text file.
 #DATA_FILE = Path("/var/www/arbsq/projects/speech/data.jsonl")
-DATA_FILE = Path("/var/www/arbsq/user_data/speech_project/response.txt")
+
+#DATA_FILE = Path("/var/www/arbsq/user_data/speech_project/response.txt")
+cur_path="/var/www/arbsq/user_data/speech_project/responses.txt"
+DATA_FILE = Path(cur_path)
 
 # Keys to extract. Use dots for nested JSON keys.
 COLUMNS = [
