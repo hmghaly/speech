@@ -23,6 +23,7 @@ COLUMNS = [
     ("optionId", "optionId"),
     ("question.audio_path", "audio_path"),
     ("question.original_sentence", "original_sentence"),
+    ("consented", "consented"),
 ]
 
 # ==========================================
