@@ -6,6 +6,7 @@ import {
   validateProject,
   validateStudy,
   normalizeSampleStudy,
+  randomizeStudy,
   validateUsername,
   progressFor,
 } from "./data.js";
@@ -173,7 +174,11 @@ export function createLocalStore() {
       const target =
         input.role === "speaker"
           ? await this.getProject(input.targetId)
-          : await this.getStudy(input.targetId);
+          : input.study || (await this.getStudy(input.targetId));
+      if (input.role === "listener") {
+        validateStudy(target);
+        if (target.id !== input.targetId) throw new AppError("invalidStudy");
+      }
       const participantId =
         input.role === "listener"
           ? validateUsername(input.participantId)
@@ -194,7 +199,12 @@ export function createLocalStore() {
         ).map((item) => item.id),
         ...(input.role === "speaker"
           ? { projectId: target.id, projectRevision: target.revision }
-          : { studyId: target.id, studyRevision: target.revision }),
+          : {
+              studyId: target.id,
+              studyRevision: target.revision,
+              // Keep the draw across reloads, answer saves and audio requests.
+              study: structuredClone(target),
+            }),
         createdAt: input.createdAt,
         status: "in_progress",
         completedAt: null,
@@ -280,7 +290,7 @@ export function createLocalStore() {
         return receipt;
       });
     },
-    async getStudy(id) {
+    async getStudy(id, { randomize = true } = {}) {
       if (!isId(id)) throw new AppError("invalidStudy");
       try {
         const response = await fetch(
@@ -292,17 +302,14 @@ export function createLocalStore() {
         const data = await response.json();
         const study = id === "sample" ? normalizeSampleStudy(data) : data;
 
-        console.log("check loaded study")
-        console.log(study)
-        
         validateStudy(study);
         if (study.id !== id) throw new AppError("invalidStudy");
-        return study;
+        return randomize ? randomizeStudy(study) : study;
       } catch {
         throw new AppError("invalidStudy");
       }
     },
-    async resolveAudio(assetId, { studyId } = {}) {
+    async resolveAudio(assetId, { studyId, sessionId } = {}) {
       const db = await openDatabase();
       const audio = await new Promise((resolve, reject) => {
         const request = db
@@ -320,7 +327,12 @@ export function createLocalStore() {
           release: () => URL.revokeObjectURL(src),
         };
       }
-      const study = await this.getStudy(studyId);
+      const progress = sessionId ? await this.getSession(sessionId) : null;
+      if (progress && progress.session.studyId !== studyId)
+        throw new AppError("audioFailed");
+      const study =
+        progress?.session.study ||
+        (await this.getStudy(studyId, { randomize: false }));
       const asset = study.media.find((item) => item.id === assetId);
       if (
         !["./assets/audio/", "./sample/audio/"].some((prefix) =>
@@ -335,7 +347,10 @@ export function createLocalStore() {
       };
     },
     async saveAnswer(answer, { operationId = answer.id } = {}) {
-      const study = await this.getStudy(answer.studyId);
+      const { session } = await this.getSession(answer.sessionId);
+      const study =
+        session.study ||
+        (await this.getStudy(answer.studyId, { randomize: false }));
       const question = study.questions.find(
         (item) => item.id === answer.questionId,
       );

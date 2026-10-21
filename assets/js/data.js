@@ -147,24 +147,9 @@ export function validateUsername(value) {
 
 // Map the client's sample rows into the listener contract without changing the source JSON.
 export function normalizeSampleStudy(rows) {
-  
-
   if (!Array.isArray(rows) || !rows.length) throw new AppError("invalidStudy");
   const media = new Map();
   const questions = rows.map((row, order) => {
-    
-    const alt_audio_paths= row["alt_audio_paths"]
-    const original_sentence= row["original_sentence"]
-    // tmp_audio_path=get_1st_random(alt_audio_paths)
-    console.log(row)
-    console.log(row.audio_path)
-    //row.audio_path=get_1st_random(alt_audio_paths)
-    
-    console.log(get_1st_random(alt_audio_paths))
-
-
-
-
     const audio =
       typeof row?.audio_path === "string"
         ? row.audio_path.match(/^sample\/audio\/([a-zA-Z0-9_-]+)\.wav$/)
@@ -181,14 +166,17 @@ export function normalizeSampleStudy(rows) {
       throw new AppError("invalidStudy");
     const audioAssetId = audio[1];
 
-    console.log("audioAssetId",audioAssetId)
     media.set(audioAssetId, {
       id: audioAssetId,
       path: "./" + row.audio_path,
       mimeType: "audio/wav",
     });
     return {
+      // Assign identity before shuffling; changing the recording must not rename a question.
       id: audioAssetId + "-" + (order + 1),
+      audio_path: row.audio_path,
+      alt_audio_paths: row.alt_audio_paths || [],
+      original_sentence: row.original_sentence,
       order,
       presentationMode: "both",
       language: "en",
@@ -214,6 +202,49 @@ export function normalizeSampleStudy(rows) {
     questions,
     media: [...media.values()],
   };
+  validateStudy(study);
+  return study;
+}
+
+// Fisher–Yates returns a new array, leaving source rows and audio choices untouched.
+function shuffled(items, random) {
+  const result = [...items];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+// Draw once when loading a study; the session retains this exact order and audio assignment.
+export function randomizeStudy(source, random = Math.random) {
+  const study = structuredClone(source);
+  const media = new Map((study.media || []).map((asset) => [asset.id, asset]));
+  study.questions = shuffled(study.questions, random).map((question, order) => {
+    const alternatives = question.alt_audio_paths || [];
+    if (
+      !Array.isArray(alternatives) ||
+      alternatives.some(
+        (path) =>
+          typeof path !== "string" ||
+          !/^sample\/audio\/[a-zA-Z0-9_-]+\.wav$/.test(path),
+      )
+    )
+      throw new AppError("invalidStudy");
+    if (alternatives.length) {
+      question.audio_path = shuffled(alternatives, random)[0];
+      const id = question.audio_path.match(/([a-zA-Z0-9_-]+)\.wav$/)[1];
+      question.stimulus.audioAssetId = id;
+      media.set(id, {
+        id,
+        path: "./" + question.audio_path,
+        mimeType: "audio/wav",
+      });
+    }
+    question.order = order;
+    return question;
+  });
+  study.media = [...media.values()];
   validateStudy(study);
   return study;
 }

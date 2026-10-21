@@ -1,6 +1,12 @@
-/* global post_async */
+/* global post_async, get_1st_random */
 import { store } from "./storage.js";
-import { AppError, uid, timestamp, validateUsername } from "./data.js";
+import {
+  AppError,
+  uid,
+  timestamp,
+  validateUsername,
+  randomizeStudy,
+} from "./data.js";
 import {
   setup,
   bind,
@@ -48,12 +54,13 @@ function showParticipant(session) {
 // A name is requested only for a new session; Back returns to the saved-session choice.
 function showParticipantForm() {
   if (state !== "start") return;
+  sessionInput = null;
   state = "naming";
   get("listener-start").hidden = true;
   get("participant-form").hidden = false;
   get("participant-error").hidden = true;
   get("page-error").hidden = true;
-  get("participant-name").value = listenerId;
+  get("participant-name").value = window.listenerId;
   get("participant-name").removeAttribute("aria-invalid");
   showParticipant(null);
   get("participant-name").focus();
@@ -156,11 +163,11 @@ async function complete() {
   get("question-panel").hidden = true;
   get("listener-start").hidden = true;
   status(get("page-status"), "completion.checking");
-  
+
   //create a completion code
   const randomNumber = Math.floor(Math.random() * 900) + 100;
-  const completion_code=window.listenerId+"-"+randomNumber
-  get("completion-detail").innerHTML="Completion Code: "+completion_code
+  const completion_code = window.listenerId + "-" + randomNumber;
+  get("completion-detail").innerHTML = "Completion Code: " + completion_code;
 
   try {
     progress = await store.completeSession(progress.session.id);
@@ -211,12 +218,10 @@ async function renderQuestion() {
   };
 
   //post_data_async(link,obj2upload)
-  const question_presentation_modes=["audio_only","text_only","both"] //randomize question presentation
-  question.presentationMode=get_1st_random(question_presentation_modes)
+  const question_presentation_modes = ["audio_only", "text_only", "both"]; //randomize question presentation
+  question.presentationMode = get_1st_random(question_presentation_modes);
   window.cur_question = question;
   console.log(question);
-
-
 
   bind(get("answer-progress"), "listener.progress", counts);
   bind(get("listener-progress"), "listener.progress", counts, "aria-label");
@@ -302,7 +307,7 @@ async function startSession(resume = false) {
   try {
     if (!resume) {
       const name = validateUsername(get("participant-name").value);
-      window.listenerId=name
+      window.listenerId = name;
       if (!sessionInput || sessionInput.participantId !== name)
         sessionInput = {
           id: uid(),
@@ -311,6 +316,7 @@ async function startSession(resume = false) {
           role: "listener",
           targetId: study.id,
           createdAt: timestamp(),
+          study: randomizeStudy(study),
         };
     }
     state = "starting";
@@ -322,6 +328,17 @@ async function startSession(resume = false) {
         operationId: sessionInput.id,
       });
     }
+    // Older sessions predate snapshots: keep their original order and base recordings.
+    study =
+      progress.session.study ||
+      (await store.getStudy(studyId, { randomize: false }));
+    if (!progress.session.study)
+      study.questions = progress.requiredItemIds.map((id, order) => {
+        const question = study.questions.find((item) => item.id === id);
+        if (!question) throw new AppError("conflict");
+        return { ...question, order };
+      });
+    window.listenerId = progress.session.participantId;
     if (alive) await renderQuestion();
   } catch (failure) {
     state = resume ? "start" : "naming";
@@ -451,10 +468,6 @@ get("retry-page").addEventListener("click", async () => {
 async function loadStudy() {
   try {
     study = await store.getStudy(studyId);
-    //study.questions=shuffle(study.questions)
-
-    console.log(study)
-
     get("demo-notice").hidden = study.id !== "demo";
     get("study-title").textContent = study.title;
     get("study-title").dataset.content = "study.title";
