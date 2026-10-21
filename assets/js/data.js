@@ -175,6 +175,8 @@ export function normalizeSampleStudy(rows) {
     )
       throw new AppError("invalidStudy");
     const audioAssetId = audio[1];
+
+    console.log("audioAssetId",audioAssetId)
     media.set(audioAssetId, {
       id: audioAssetId,
       path: "./" + row.audio_path,
