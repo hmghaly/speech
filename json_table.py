@@ -19,7 +19,7 @@ DATA_FILE = Path(cur_path)
 
 # Keys to extract. Use dots for nested JSON keys.
 COLUMNS = [
-    ("participantId", "participantId"),
+    ("name", "name"),
     ("optionId", "optionId"),
     ("question.audio_path", "audio_path"),
     ("question.original_sentence", "original_sentence"),

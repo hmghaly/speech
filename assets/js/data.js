@@ -160,6 +160,7 @@ export function normalizeSampleStudy(rows) {
   if (!Array.isArray(rows) || !rows.length) throw new AppError("invalidStudy");
   const media = new Map();
   const questions = rows.map((row, order) => {
+    console.log(row)
     const audio =
       typeof row?.audio_path === "string"
         ? row.audio_path.match(/^sample\/audio\/([a-zA-Z0-9_-]+)\.wav$/)
