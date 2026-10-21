@@ -153,8 +153,10 @@ export function normalizeSampleStudy(rows) {
     
     const alt_audio_paths= row["alt_audio_paths"]
     const original_sentence= row["original_sentence"]
-    row.audio_path=get_1st_random(alt_audio_paths)
+    tmp_audio_path=get_1st_random(alt_audio_paths)
     console.log(row)
+    console.log(row.audio_path)
+    console.log(tmp_audio_path)
 
 
 
