@@ -9,6 +9,7 @@ import {
   randomizeStudy,
   validateUsername,
   progressFor,
+  consentRecord,
 } from "./data.js";
 
 // Every page depends on this object, not IndexedDB. Swap its factory for remote storage.
@@ -204,6 +205,7 @@ export function createLocalStore() {
               studyRevision: target.revision,
               // Keep the draw across reloads, answer saves and audio requests.
               study: structuredClone(target),
+              ...consentRecord(input.consented, input.consentRecordedAt),
             }),
         createdAt: input.createdAt,
         status: "in_progress",
@@ -223,6 +225,22 @@ export function createLocalStore() {
     },
     getSession: (id) =>
       transaction("readonly", (snapshot) => sessionProgress(snapshot, id)),
+    // Sessions created before the consent step record a choice once, keeping their progress.
+    recordConsent: (id, input) => {
+      const consent = consentRecord(input.consented, input.consentRecordedAt);
+      return transaction("readwrite", (snapshot, put) => {
+        const { session } = sessionProgress(snapshot, id);
+        if (session.role !== "listener") throw new AppError("conflict");
+        if (typeof session.consented === "boolean") {
+          if (session.consented !== consent.consented)
+            throw new AppError("conflict");
+        } else {
+          Object.assign(session, consent);
+          put("sessions", session);
+        }
+        return sessionProgress(snapshot, id);
+      });
+    },
     async saveRecording(
       { recording, blob },
       { operationId = recording.id } = {},
@@ -371,6 +389,8 @@ export function createLocalStore() {
           study.revision !== answer.studyRevision ||
           session.studyRevision !== answer.studyRevision ||
           session.participantId !== answer.participantId ||
+          typeof session.consented !== "boolean" ||
+          session.consented !== answer.consented ||
           !session.requiredItemIds.includes(answer.questionId)
         )
           throw new AppError("conflict");

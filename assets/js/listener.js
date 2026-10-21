@@ -6,6 +6,7 @@ import {
   timestamp,
   validateUsername,
   randomizeStudy,
+  consentRecord,
 } from "./data.js";
 import {
   setup,
@@ -34,6 +35,8 @@ let progress;
 let previous;
 let pending;
 let sessionInput;
+let consentSession;
+let consentInput;
 let state = "loading";
 let mediaHandle;
 let audio = get("question-audio");
@@ -52,18 +55,35 @@ function showParticipant(session) {
 }
 
 // A name is requested only for a new session; Back returns to the saved-session choice.
-function showParticipantForm() {
+function showParticipantForm(session = null) {
   if (state !== "start") return;
   sessionInput = null;
+  consentSession = session;
+  consentInput = null;
   state = "naming";
   get("listener-start").hidden = true;
   get("participant-form").hidden = false;
   get("participant-error").hidden = true;
+  get("participant-name-error").hidden = true;
   get("page-error").hidden = true;
   get("participant-name").value = window.listenerId;
   get("participant-name").removeAttribute("aria-invalid");
-  showParticipant(null);
-  get("participant-name").focus();
+  get("participant-name-fields").hidden = Boolean(session);
+  get("participant-name").required = !session;
+  get("consent-options").removeAttribute("aria-invalid");
+  for (const radio of get("consent-options").querySelectorAll("input"))
+    radio.checked = false;
+  bind(
+    get("participant-heading"),
+    session ? "listener.consentTitle" : "listener.newTitle",
+  );
+  bind(
+    get("participant-help"),
+    session ? "listener.consentHelp" : "listener.nameHelp",
+  );
+  showParticipant(session);
+  if (session) focusHeading(get("consent-heading"));
+  else get("participant-name").focus();
 }
 
 // Prevent duplicate session creation while the name or saved session is being submitted.
@@ -74,6 +94,7 @@ function entryBusy(busy) {
     "participant-name",
     "participant-proceed",
     "participant-cancel",
+    "consent-options",
   ])
     get(id).disabled = busy;
 }
@@ -304,11 +325,25 @@ async function startSession(resume = false) {
   if (state !== (resume ? "start" : "naming")) return;
   get("page-error").hidden = true;
   get("participant-error").hidden = true;
+  get("participant-name-error").hidden = true;
   try {
     if (!resume) {
-      const name = validateUsername(get("participant-name").value);
+      const name =
+        consentSession?.participantId ||
+        validateUsername(get("participant-name").value);
+      const choice =
+        get("consent-options").querySelector("input:checked")?.value;
+      if (!choice) throw new AppError("consentRequired");
+      const consented = choice === "agree";
+      if (!consentInput || consentInput.consented !== consented)
+        consentInput = consentRecord(consented);
       window.listenerId = name;
-      if (!sessionInput || sessionInput.participantId !== name)
+      if (
+        !consentSession &&
+        (!sessionInput ||
+          sessionInput.participantId !== name ||
+          sessionInput.consented !== consented)
+      )
         sessionInput = {
           id: uid(),
           participantId: name,
@@ -317,16 +352,27 @@ async function startSession(resume = false) {
           targetId: study.id,
           createdAt: timestamp(),
           study: randomizeStudy(study),
+          ...consentInput,
         };
     }
     state = "starting";
     entryBusy(true);
     bind(get("participant-proceed"), "listener.starting");
     if (resume) progress = await store.getSession(previous.session.id);
+    else if (consentSession)
+      progress = await store.recordConsent(consentSession.id, consentInput);
     else {
       progress = await store.startSession(sessionInput, {
         operationId: sessionInput.id,
       });
+    }
+    if (
+      progress.nextItemId &&
+      typeof progress.session.consented !== "boolean"
+    ) {
+      state = "start";
+      showParticipantForm(progress.session);
+      return;
     }
     // Older sessions predate snapshots: keep their original order and base recordings.
     study =
@@ -347,14 +393,20 @@ async function startSession(resume = false) {
       showError(get("page-error"), failure);
     } else {
       get("participant-form").hidden = false;
-      showParticipant(null);
-      if (
-        ["usernameRequired", "usernameTooLong", "controlCharacters"].includes(
-          failure.code,
-        )
-      )
+      showParticipant(consentSession);
+      if (failure.code === "consentRequired")
+        get("consent-options").setAttribute("aria-invalid", "true");
+      const nameError = [
+        "usernameRequired",
+        "usernameTooLong",
+        "controlCharacters",
+      ].includes(failure.code);
+      if (nameError)
         get("participant-name").setAttribute("aria-invalid", "true");
-      showError(get("participant-error"), failure);
+      showError(
+        get(nameError ? "participant-name-error" : "participant-error"),
+        failure,
+      );
     }
   } finally {
     entryBusy(false);
@@ -388,6 +440,9 @@ get("question-panel").addEventListener("submit", async (event) => {
       participantId: progress.session.participantId,
       name: progress.session.displayName || progress.session.participantId,
       sessionId: progress.session.id,
+      consented: progress.session.consented,
+      consentVersion: progress.session.consentVersion,
+      consentRecordedAt: progress.session.consentRecordedAt,
       createdAt: timestamp(),
     };
     state = "saving";
@@ -441,13 +496,17 @@ get("play-audio").addEventListener("click", async () => {
 get("retry-audio").addEventListener("click", () =>
   loadAudio(study.questions.find((item) => item.id === progress.nextItemId)),
 );
-get("new-session").addEventListener("click", showParticipantForm);
+get("new-session").addEventListener("click", () => showParticipantForm());
 get("participant-form").addEventListener("submit", (event) => {
   event.preventDefault();
   void startSession();
 });
 get("participant-name").addEventListener("input", () => {
   get("participant-name").removeAttribute("aria-invalid");
+  get("participant-name-error").hidden = true;
+});
+get("consent-options").addEventListener("change", () => {
+  get("consent-options").removeAttribute("aria-invalid");
   get("participant-error").hidden = true;
 });
 get("participant-cancel").addEventListener("click", () => {

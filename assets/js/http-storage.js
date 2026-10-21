@@ -49,6 +49,11 @@ export function createHttpStore(baseUrl = "/api/v1") {
     startSession: (input, options) =>
       request("/sessions", { method: "POST", body: input, ...options }),
     getSession: (id) => request("/sessions/" + encodeURIComponent(id)),
+    recordConsent: (id, consent) =>
+      request("/sessions/" + encodeURIComponent(id) + "/consent", {
+        method: "POST",
+        body: consent,
+      }),
     saveRecording: (payload, options) => {
       const body = new FormData();
       body.append(
