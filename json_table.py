@@ -21,7 +21,7 @@ DATA_FILE = Path(cur_path)
 # Keys to extract. Use dots for nested JSON keys.
 COLUMNS = [
     ("name", "name"),
-    ("optionId", "optionId"),
+    ("optionId", "selected"),
     ("question.correct", "correct"),
     ("question.presentationMode", "presentationMode"),
     ("question.audio_path", "audio_path"),
