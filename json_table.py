@@ -15,6 +15,7 @@ from pathlib import Path
 
 #DATA_FILE = Path("/var/www/arbsq/user_data/speech_project/response.txt")
 cur_path="/var/www/arbsq/user_data/speech_project/responses.txt"
+cur_path="/var/www/arbsq/user_data/speech_project/student_responses.txt"
 DATA_FILE = Path(cur_path)
 
 #presentationMode
