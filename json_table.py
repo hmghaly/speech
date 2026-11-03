@@ -14,8 +14,17 @@ from pathlib import Path
 #DATA_FILE = Path("/var/www/arbsq/projects/speech/data.jsonl")
 
 #DATA_FILE = Path("/var/www/arbsq/user_data/speech_project/response.txt")
-cur_path="/var/www/arbsq/user_data/speech_project/responses.txt"
-cur_path="/var/www/arbsq/user_data/speech_project/student_responses.txt"
+fname="responses.txt"
+data_dir="/var/www/arbsq/user_data/speech_project"
+
+raw_query = os.environ.get("QUERY_STRING", "")
+query_str_dict=dict(iter([v.split("=") for v in raw_query.split("&")]))
+query_fname=query_str_dict.get("fname")
+if query_fname!=None and query_fname.endswith(".txt"): fname=query_fname
+
+# cur_path="/var/www/arbsq/user_data/speech_project/responses.txt"
+# cur_path="/var/www/arbsq/user_data/speech_project/student_responses.txt"
+cur_path=os.path.join(data_dir,fname)
 DATA_FILE = Path(cur_path)
 
 #presentationMode
